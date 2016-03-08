@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,23 +20,58 @@ public class bodyInfo extends AppCompatActivity {
 
     int heightFeet,heightInches;
     float weight,biscepLeft,biscepRight,waist,BMI;
+    EditText heightFeetField;
+    EditText heightInchesField;
+    EditText weightField;
+    EditText biscepLeftField;
+    EditText biscepRightField;
+    EditText waistField;
+    EditText bmiField;
 
 
     @Override
     protected void onCreate(Bundle savedinstanceState){
         super.onCreate(savedinstanceState);
         setContentView(R.layout.activity_bodyinfo);
+        heightFeetField = (EditText)findViewById(R.id.feet);
+        heightInchesField = (EditText)findViewById(R.id.inches);
+        weightField =(EditText)findViewById(R.id.pounds);
+        biscepLeftField = (EditText)findViewById(R.id.biscepLeft);
+        biscepRightField = (EditText)findViewById(R.id.biscepRight);
+        waistField = (EditText)findViewById(R.id.waist);
+        bmiField = (EditText)findViewById(R.id.BMI);
+        addListeners();
     }
 
 
 
-    public void calculateBmi(View v){
 
+    public void checkBmi(){
+        if(!(heightFeetField.getText().toString().equals("")) &&
+                !(heightInchesField.getText().toString().equals("")) && !(weightField.getText().toString().equals(""))){
+            calculateBmi();
+        }
+        else{
+            bmiField.setText("");
+        }
+    }
+
+
+    public void calculateBmi(){
+        float weight = Float.parseFloat(weightField.getText().toString());
+        int heightFeet = Integer.parseInt(heightFeetField.getText().toString());
+        int heightInch = Integer.parseInt(heightInchesField.getText().toString());
+        heightInch = heightInch + (12*heightFeet);
         //ENABLE THIS BUTTON ONLY AFTER THE REQUIRED FIELDS ARE THERE
-        Log.i("CALCULATEWEIGHT",Float.toString(weight));
-        Log.i("CALCULATHEIGHTFEET",Integer.toString(heightFeet));
-        Log.i("CALCULATEHEIGHTINCHES",Integer.toString(heightInches));
-        Log.i("CALCULATEBMI",Float.toString(BMI));
+        Log.i("CALCULATEWEIGHT",weightField.getText().toString());
+        Log.i("CALCULATHEIGHTFEET",heightFeetField.getText().toString());
+        Log.i("CALCULATEHEIGHTINCHES", heightInchesField.getText().toString());
+        float bmi = 0;
+        bmi = weight * 703;
+        heightInch = heightInch * heightInch;
+        bmi = bmi / heightInch;
+        String finalResult = String.format("%.2f", bmi);
+        bmiField.setText(finalResult);
 
 
     }
@@ -45,13 +82,7 @@ public class bodyInfo extends AppCompatActivity {
 
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 
-        EditText heightFeetField = (EditText)findViewById(R.id.feet);
-        EditText heightInchesField = (EditText)findViewById(R.id.inches);
-        EditText weightField =(EditText)findViewById(R.id.pounds);
-        EditText biscepLeftField = (EditText)findViewById(R.id.biscepLeft);
-        EditText biscepRightField = (EditText)findViewById(R.id.biscepRight);
-        EditText waistField = (EditText)findViewById(R.id.waist);
-        EditText bmiField = (EditText)findViewById(R.id.BMI);
+
 
 
         if(heightFeetField.getText().toString().isEmpty() || heightInchesField.getText().toString().isEmpty() || weightField.getText().toString().isEmpty()
@@ -91,4 +122,57 @@ public class bodyInfo extends AppCompatActivity {
         }
 
     }
+
+    public void addListeners(){
+        heightFeetField.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                checkBmi();
+            }
+        });
+        heightInchesField.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                checkBmi();
+            }
+        });
+        weightField.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                checkBmi();
+            }
+        });
+    }
+
+
 }

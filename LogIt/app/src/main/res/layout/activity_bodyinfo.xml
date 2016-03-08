@@ -186,16 +186,6 @@
         android:layout_toEndOf="@+id/bodyMassIndex"
         android:width="40dp" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:text="Calculate BMI"
-        android:id="@+id/calculateBmi"
-        android:layout_alignTop="@+id/BMI"
-        android:layout_toRightOf="@+id/BMI"
-        android:layout_toEndOf="@+id/BMI"
-        android:layout_alignBottom="@+id/BMI"
-        android:onClick="calculateBmi"/>
 
 
 </RelativeLayout>
