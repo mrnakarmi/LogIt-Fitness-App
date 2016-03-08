@@ -7,11 +7,11 @@
         android:layout_height="wrap_content"
         android:text="Height:"
         android:id="@+id/height"
+        android:layout_marginTop="42dp"
+        android:textSize="15dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="66dp"
-        android:textSize="30dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -19,9 +19,10 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/feet"
-        android:layout_alignTop="@+id/height"
-        android:layout_toRightOf="@+id/height"
-        android:width="30dp" />
+        android:width="30dp"
+        android:layout_alignBottom="@+id/height"
+        android:layout_toLeftOf="@+id/pounds"
+        android:layout_toStartOf="@+id/pounds" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,10 +39,10 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/inches"
-        android:layout_alignBottom="@+id/height"
+        android:width="30dp"
+        android:layout_alignTop="@+id/feet"
         android:layout_toRightOf="@+id/feetText"
-        android:layout_toEndOf="@+id/feetText"
-        android:width="30dp" />
+        android:layout_toEndOf="@+id/feetText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,22 +59,22 @@
         android:layout_height="wrap_content"
         android:text="Update Info"
         android:id="@+id/updateInfo"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="74dp"
+        android:onClick="updateInfo"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/feetText"
-        android:layout_toEndOf="@+id/feetText"
-        android:onClick="updateInfo"/>
+        android:layout_alignLeft="@+id/inchesText"
+        android:layout_alignStart="@+id/inchesText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Weight:"
+        android:text="Weight(lbs):"
         android:id="@+id/weight"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
         android:layout_below="@+id/feet"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="48dp"
-        android:textSize="30dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -89,12 +90,112 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="lbs"
-        android:id="@+id/poundsText"
-        android:layout_alignBaseline="@+id/weight"
-        android:layout_alignBottom="@+id/weight"
-        android:layout_alignRight="@+id/inchesText"
-        android:layout_alignEnd="@+id/inchesText" />
+        android:text="Biscep Measurement(in):"
+        android:id="@+id/biscepMeasurement"
+        android:layout_below="@+id/weight"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:textIsSelectable="false"
+        android:textSize="15dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/biscepLeft"
+        android:width="35dp"
+        android:layout_alignBottom="@+id/biscepMeasurement"
+        android:layout_toRightOf="@+id/biscepMeasurement"
+        android:layout_toEndOf="@+id/biscepMeasurement" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Left"
+        android:id="@+id/biscepText"
+        android:layout_alignBottom="@+id/biscepLeft"
+        android:layout_toRightOf="@+id/biscepLeft"
+        android:layout_toEndOf="@+id/biscepLeft"
+        android:textSize="10dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/biscepRight"
+        android:width="35dp"
+        android:layout_alignBaseline="@+id/biscepLeft"
+        android:layout_alignBottom="@+id/biscepLeft"
+        android:layout_toRightOf="@+id/biscepText"
+        android:layout_toEndOf="@+id/biscepText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Right"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/biscepRight"
+        android:layout_toRightOf="@+id/biscepRight"
+        android:layout_toEndOf="@+id/biscepRight"
+        android:textSize="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waist Measurment(in):"
+        android:id="@+id/waistMeasurement"
+        android:layout_below="@+id/biscepMeasurement"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/waist"
+        android:layout_alignBottom="@+id/waistMeasurement"
+        android:layout_toRightOf="@+id/waistMeasurement"
+        android:layout_toEndOf="@+id/waistMeasurement"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Body Mass Index(BMI):"
+        android:id="@+id/bodyMassIndex"
+        android:layout_below="@+id/waistMeasurement"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="22dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/BMI"
+        android:layout_alignBottom="@+id/bodyMassIndex"
+        android:layout_toRightOf="@+id/bodyMassIndex"
+        android:layout_toEndOf="@+id/bodyMassIndex"
+        android:width="40dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:text="Calculate BMI"
+        android:id="@+id/calculateBmi"
+        android:layout_alignTop="@+id/BMI"
+        android:layout_toRightOf="@+id/BMI"
+        android:layout_toEndOf="@+id/BMI"
+        android:layout_alignBottom="@+id/BMI"
+        android:onClick="calculateBmi"/>
 
 
 </RelativeLayout>
