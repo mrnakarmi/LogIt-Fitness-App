@@ -9,8 +9,71 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="danman.logit.HomeScreen">
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Body Info"
+        android:id="@+id/bodyInfo"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="bodyInfo"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Body Stats"
+        android:id="@+id/bodyStats"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/bodyInfo"
+        android:layout_alignStart="@+id/bodyInfo"
+        android:layout_marginTop="100dp"
+        android:onClick="bodyStats"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="16"
+        android:text="Create Workout Plan"
+        android:id="@+id/createWorkout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp"
+        android:onClick="createWorkout"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calendar"
+        android:id="@+id/calendar"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_alignTop="@+id/bodyInfo"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="calendar"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Milestone"
+        android:id="@+id/milestone"
+        android:layout_alignBottom="@+id/bodyStats"
+        android:layout_alignRight="@+id/calendar"
+        android:layout_alignEnd="@+id/calendar"
+        android:onClick="milestone"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start A Quick Workout"
+        android:id="@+id/quickWorkout"
+        android:layout_above="@+id/calendar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="quickWorkout"/>
 </RelativeLayout>
