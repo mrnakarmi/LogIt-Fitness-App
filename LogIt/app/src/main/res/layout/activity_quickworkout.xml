@@ -19,9 +19,11 @@
         android:layout_height="wrap_content"
         android:text="Start Timer"
         android:id="@+id/startTimer"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="timeStart"/>
+        android:onClick="timeStart"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/minutesText"
+        android:layout_toEndOf="@+id/minutesText"
+        android:layout_marginBottom="42dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,6 +56,90 @@
         android:layout_alignBottom="@+id/minutes"
         android:layout_toRightOf="@+id/minutes"
         android:layout_toEndOf="@+id/minutes" />
+
+    <Spinner
+        android:id="@+id/quickFocus"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:layout_marginTop="19dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What will you be working on?"
+        android:id="@+id/textView2"
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/time"
+        android:layout_alignLeft="@+id/time"
+        android:layout_alignStart="@+id/time" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sets:"
+        android:id="@+id/quickSets"
+        android:layout_below="@+id/quickFocus"
+        android:layout_alignLeft="@+id/quickFocus"
+        android:layout_alignStart="@+id/quickFocus"
+        android:layout_marginTop="61dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/quickExcerciseSets"
+        android:layout_alignBottom="@+id/quickSets"
+        android:layout_alignLeft="@+id/minutes"
+        android:layout_alignStart="@+id/minutes"
+        android:width="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repititons:"
+        android:id="@+id/quickRepitions"
+        android:layout_below="@+id/quickSets"
+        android:layout_alignLeft="@+id/quickSets"
+        android:layout_alignStart="@+id/quickSets"
+        android:layout_marginTop="19dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/quickExcerciseReps"
+        android:layout_alignBottom="@+id/quickRepitions"
+        android:layout_toRightOf="@+id/quickRepitions"
+        android:layout_toEndOf="@+id/quickRepitions"
+        android:width="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight(lbs):"
+        android:id="@+id/quickWeight"
+        android:layout_below="@+id/quickRepitions"
+        android:layout_alignLeft="@+id/quickRepitions"
+        android:layout_alignStart="@+id/quickRepitions"
+        android:layout_marginTop="18dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/quickExcerciseWeight"
+        android:width="35dp"
+        android:layout_below="@+id/quickExcerciseReps"
+        android:layout_toRightOf="@+id/quickWeight"
+        android:layout_toEndOf="@+id/quickWeight" />
 
 
 </RelativeLayout>

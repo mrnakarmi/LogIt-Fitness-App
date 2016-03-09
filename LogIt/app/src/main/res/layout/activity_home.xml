@@ -14,24 +14,10 @@
         android:layout_height="wrap_content"
         android:text="Body Info"
         android:id="@+id/bodyInfo"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="100dp"
-        android:layout_alignParentTop="true"
+        android:onClick="bodyInfo"
+        android:layout_alignTop="@+id/milestone"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="bodyInfo"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Body Stats"
-        android:id="@+id/bodyStats"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/bodyInfo"
-        android:layout_alignStart="@+id/bodyInfo"
-        android:layout_marginTop="100dp"
-        android:onClick="bodyStats"/>
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="fill_parent"
@@ -39,41 +25,39 @@
         android:layout_weight="16"
         android:text="Create Workout Plan"
         android:id="@+id/createWorkout"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="64dp"
-        android:onClick="createWorkout"/>
+        android:onClick="createWorkout"
+        android:layout_below="@+id/milestone"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="83dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Calendar"
         android:id="@+id/calendar"
-        android:layout_marginRight="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_alignTop="@+id/bodyInfo"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="calendar"/>
+        android:onClick="calendar"
+        android:layout_alignTop="@+id/milestone"
+        android:layout_alignRight="@+id/createWorkout"
+        android:layout_alignEnd="@+id/createWorkout" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Milestone"
         android:id="@+id/milestone"
-        android:layout_alignBottom="@+id/bodyStats"
-        android:layout_alignRight="@+id/calendar"
-        android:layout_alignEnd="@+id/calendar"
-        android:onClick="milestone"/>
+        android:onClick="milestone"
+        android:layout_marginTop="81dp"
+        android:layout_below="@+id/quickWorkout"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start A Quick Workout"
         android:id="@+id/quickWorkout"
-        android:layout_above="@+id/calendar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="30dp"
-        android:onClick="quickWorkout"/>
+        android:layout_marginTop="42dp"
+        android:onClick="quickWorkout"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
