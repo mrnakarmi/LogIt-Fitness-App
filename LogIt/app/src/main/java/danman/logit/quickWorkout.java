@@ -1,5 +1,6 @@
 package danman.logit;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Raman on 3/7/2016.
@@ -23,8 +26,8 @@ public class quickWorkout extends AppCompatActivity {
     TextView time,sets,reps,weight;
     EditText setsValue,repsValue,weightValue;
     Button timer;
+    CountDownTimer myCountDownTimer = null;
 
-    boolean cancel = false;
 
     @Override
     protected void onCreate(Bundle savedinstanceState){
@@ -111,51 +114,49 @@ public class quickWorkout extends AppCompatActivity {
     }
 
 
+
+
     public void timeStart (View v){
 
         time = (TextView)findViewById(R.id.minutes);
+        long minutes = Long.parseLong(time.getText().toString());
+        Log.i("MYAPPMINUTES",time.getText().toString());
+        TextView mTextField = (TextView) findViewById(R.id.timer);
+        long seconds = minutes *60;
+        long milli = seconds *1000;
 
+        if(timer.getText().equals("Start Timer")){
+            timer.setText("Cancel");
 
-        if(time.getText().toString().isEmpty()){
-            Log.i("MYAPP","minute field is empty");
+            if(time.getText().toString().isEmpty()){
+                Log.i("MYAPP","minute field is empty");
 
-        }else {
+            }else {
 
-            long minutes = Long.parseLong(time.getText().toString());
-            Log.i("MYAPPMINUTES",time.getText().toString());
+                //start
+                myCountDownTimer = new CountDownTimer(milli, 1000) {
+                    TextView mTextField = (TextView) findViewById(R.id.timer);
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        mTextField.setVisibility(View.VISIBLE);
+                        mTextField.setText("seconds remaining: " + millisUntilFinished / 1000 + " secs");
+                    }
 
-            long seconds = minutes *60;
-            long milli = seconds *1000;
+                    @Override
+                    public void onFinish() {
+                        mTextField.setVisibility(View.INVISIBLE);
+                    }
+                }.start();
 
-
-            cancel = false;
-
-           CountDownTimer myCountDownTimer = new CountDownTimer(milli, 1000) {
-                TextView mTextField = (TextView) findViewById(R.id.timer);
-               @Override
-                public void onTick(long millisUntilFinished) {
-                   if(cancel == false) {
-                       mTextField.setVisibility(View.VISIBLE);
-                       mTextField.setText("seconds remaining: " + millisUntilFinished / 1000 + " secs");
-                   }else{
-                       mTextField.setVisibility(View.INVISIBLE);
-                   }
-                }
-
-               @Override
-                public void onFinish() {
-                    mTextField.setVisibility(View.INVISIBLE);
-                }
-            };
-
-            if(timer.getText().equals("Cancel")){
-                cancel = true;
-                timer.setText("Start Timer");
-            }else{
-                cancel = false;
-                timer.setText("Cancel");
             }
+        }else{
+            //cancel
+            myCountDownTimer.cancel();
+            myCountDownTimer = null;
+            mTextField.setVisibility(View.INVISIBLE);
+            timer.setText("Start Timer");
         }
     }
+
 
 }
