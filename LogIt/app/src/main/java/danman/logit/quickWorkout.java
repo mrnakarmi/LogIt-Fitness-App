@@ -1,6 +1,5 @@
 package danman.logit;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import java.util.Timer;
-import java.util.TimerTask;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by Raman on 3/7/2016.
@@ -23,7 +22,7 @@ public class quickWorkout extends AppCompatActivity {
 
     Spinner dropdown;
 
-    TextView time,sets,reps,weight;
+    TextView timeMinutes,timeSeconds,sets,reps,weight;
     EditText setsValue,repsValue,weightValue;
     Button timer;
     CountDownTimer myCountDownTimer = null;
@@ -113,28 +112,41 @@ public class quickWorkout extends AppCompatActivity {
         });
     }
 
-
-
-
     public void timeStart (View v){
 
-        time = (TextView)findViewById(R.id.minutes);
-        long minutes = Long.parseLong(time.getText().toString());
-        Log.i("MYAPPMINUTES",time.getText().toString());
+        timeMinutes = (TextView)findViewById(R.id.quickTimerMinutes);
+        timeSeconds = (TextView)findViewById(R.id.quickTimerSeconds);
+        long minutes,seconds;
+
+        if(timeMinutes.getText().toString().isEmpty()){
+            minutes = 0;
+        }else{
+            minutes = Long.parseLong(timeMinutes.getText().toString());
+        }
+        if(timeSeconds.getText().toString().isEmpty()){
+            seconds = 0;
+        }else{
+            seconds = Long.parseLong(timeSeconds.getText().toString());
+        }
+        Log.i("MYAPPMINUTES",timeMinutes.getText().toString());
+        Log.i("MYAPPSECONDS",timeSeconds.getText().toString());
         TextView mTextField = (TextView) findViewById(R.id.timer);
-        long seconds = minutes *60;
-        long milli = seconds *1000;
+        long minutesToSeconds = minutes *60;
+        long secondsToMilli = minutesToSeconds *1000;
+        long addingSeconds = seconds * 1000;
+        long finalTime = secondsToMilli + addingSeconds; //to produce cases like 5 mins and 30 seconds.
+        Log.i("MYAPPFINALTIME",Float.toString(finalTime));
 
         if(timer.getText().equals("Start Timer")){
             timer.setText("Cancel");
 
-            if(time.getText().toString().isEmpty()){
-                Log.i("MYAPP","minute field is empty");
+            if(timeMinutes.getText().toString().isEmpty() && timeSeconds.getText().toString().isEmpty()){
+                Log.i("MYAPP","time field is empty");
 
             }else {
 
                 //start
-                myCountDownTimer = new CountDownTimer(milli, 1000) {
+                myCountDownTimer = new CountDownTimer(finalTime, 1000) {
                     TextView mTextField = (TextView) findViewById(R.id.timer);
                     @Override
                     public void onTick(long millisUntilFinished) {

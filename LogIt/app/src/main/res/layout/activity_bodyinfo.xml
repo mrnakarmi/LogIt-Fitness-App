@@ -115,7 +115,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Left"
-        android:id="@+id/biscepText"
+        android:id="@+id/biscepLeftText"
         android:layout_alignBottom="@+id/biscepLeft"
         android:layout_toRightOf="@+id/biscepLeft"
         android:layout_toEndOf="@+id/biscepLeft"
@@ -130,15 +130,15 @@
         android:width="35dp"
         android:layout_alignBaseline="@+id/biscepLeft"
         android:layout_alignBottom="@+id/biscepLeft"
-        android:layout_toRightOf="@+id/biscepText"
-        android:layout_toEndOf="@+id/biscepText" />
+        android:layout_toRightOf="@+id/biscepLeftText"
+        android:layout_toEndOf="@+id/biscepLeftText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Right"
-        android:id="@+id/textView"
+        android:id="@+id/biscepRightText"
         android:layout_alignBottom="@+id/biscepRight"
         android:layout_toRightOf="@+id/biscepRight"
         android:layout_toEndOf="@+id/biscepRight"
@@ -170,10 +170,10 @@
         android:layout_height="wrap_content"
         android:text="Body Mass Index(BMI):"
         android:id="@+id/bodyMassIndex"
-        android:layout_below="@+id/waistMeasurement"
+        android:layout_below="@+id/thighLeft"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:layout_marginTop="20dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -181,11 +181,68 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:id="@+id/BMI"
-        android:layout_alignBottom="@+id/bodyMassIndex"
+        android:width="50dp"
+        android:layout_below="@+id/thighLeft"
         android:layout_toRightOf="@+id/bodyMassIndex"
-        android:layout_toEndOf="@+id/bodyMassIndex"
-        android:width="40dp" />
+        android:layout_toEndOf="@+id/bodyMassIndex" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thigh Measurment(in):"
+        android:id="@+id/thighMeasurement"
+        android:layout_above="@+id/BMI"
+        android:layout_below="@+id/waistMeasurement"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/thighLeft"
+        android:width="35dp"
+        android:layout_below="@+id/waist"
+        android:layout_alignLeft="@+id/BMI"
+        android:layout_alignStart="@+id/BMI" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Left"
+        android:id="@+id/thighLeftText"
+        android:textSize="10dp"
+        android:layout_alignBaseline="@+id/thighMeasurement"
+        android:layout_alignBottom="@+id/thighMeasurement"
+        android:layout_toRightOf="@+id/thighLeft"
+        android:layout_toEndOf="@+id/thighLeft" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/thighRight"
+        android:width="35dp"
+        android:layout_alignBaseline="@+id/thighLeft"
+        android:layout_alignBottom="@+id/thighLeft"
+        android:layout_toRightOf="@+id/thighLeftText"
+        android:layout_toEndOf="@+id/thighLeftText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Right"
+        android:id="@+id/thighRightText"
+        android:textSize="10dp"
+        android:layout_alignBaseline="@+id/thighLeftText"
+        android:layout_alignBottom="@+id/thighLeftText"
+        android:layout_toRightOf="@+id/thighRight"
+        android:layout_toEndOf="@+id/thighRight" />
 
 
 </RelativeLayout>

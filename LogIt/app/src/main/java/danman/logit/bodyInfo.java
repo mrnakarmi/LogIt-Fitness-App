@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class bodyInfo extends AppCompatActivity {
 
     int heightFeet,heightInches;
-    float weight,biscepLeft,biscepRight,waist,BMI;
+    float weight,biscepLeft,biscepRight,waist,BMI,thighLeft,thighRight;
     EditText heightFeetField;
     EditText heightInchesField;
     EditText weightField;
@@ -27,12 +27,15 @@ public class bodyInfo extends AppCompatActivity {
     EditText biscepRightField;
     EditText waistField;
     EditText bmiField;
+    EditText thighLeftField;
+    EditText thighRightField;
 
 
     @Override
     protected void onCreate(Bundle savedinstanceState){
         super.onCreate(savedinstanceState);
         setContentView(R.layout.activity_bodyinfo);
+
         heightFeetField = (EditText)findViewById(R.id.feet);
         heightInchesField = (EditText)findViewById(R.id.inches);
         weightField =(EditText)findViewById(R.id.pounds);
@@ -40,8 +43,32 @@ public class bodyInfo extends AppCompatActivity {
         biscepRightField = (EditText)findViewById(R.id.biscepRight);
         waistField = (EditText)findViewById(R.id.waist);
         bmiField = (EditText)findViewById(R.id.BMI);
+        thighLeftField = (EditText)findViewById(R.id.thighLeft);
+        thighRightField = (EditText)findViewById(R.id.thighRight);
+
         addListeners();
     }
+
+    @Override
+    public void onResume(){
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+        heightFeetField.setText(Integer.toString(settings.getInt("heightFeet",0)));
+        heightInchesField.setText(Integer.toString(settings.getInt("heightInches",0)));
+        weightField.setText(Float.toString(settings.getFloat("weight", 0)));
+        biscepLeftField.setText(Float.toString(settings.getFloat("biscepLeft", 0)));
+        biscepRightField.setText(Float.toString(settings.getFloat("biscepRight",0)));
+        waistField.setText(Float.toString(settings.getFloat("waist",0)));
+        bmiField.setText(Float.toString(settings.getFloat("BMI",0)));
+        thighLeftField.setText(Float.toString(settings.getFloat("thighLeft", 0)));
+        thighRightField.setText(Float.toString(settings.getFloat("thighRight", 0)));
+
+        Log.i("RESUMEHEIGHTFEET",heightFeetField.getText().toString());
+
+        super.onResume();
+    }
+
 
 
 
@@ -58,6 +85,7 @@ public class bodyInfo extends AppCompatActivity {
 
 
     public void calculateBmi(){
+
         float weight = Float.parseFloat(weightField.getText().toString());
         int heightFeet = Integer.parseInt(heightFeetField.getText().toString());
         int heightInch = Integer.parseInt(heightInchesField.getText().toString());
@@ -73,7 +101,6 @@ public class bodyInfo extends AppCompatActivity {
         String finalResult = String.format("%.2f", bmi);
         bmiField.setText(finalResult);
 
-
     }
 
     public void updateInfo(View v){
@@ -86,7 +113,8 @@ public class bodyInfo extends AppCompatActivity {
 
 
         if(heightFeetField.getText().toString().isEmpty() || heightInchesField.getText().toString().isEmpty() || weightField.getText().toString().isEmpty()
-                || biscepLeftField.getText().toString().isEmpty() || biscepRightField.getText().toString().isEmpty() || waistField.getText().toString().isEmpty()){
+                || biscepLeftField.getText().toString().isEmpty() || biscepRightField.getText().toString().isEmpty() || waistField.getText().toString().isEmpty()
+                || thighLeftField.getText().toString().isEmpty() || thighRightField.getText().toString().isEmpty()){
 
             //Its okay if BMI is empty because someone might need to calculate using the "Calculate BMI Update"
 
@@ -96,21 +124,28 @@ public class bodyInfo extends AppCompatActivity {
 
             SharedPreferences.Editor editor = settings.edit();
 
-             heightFeet = Integer.parseInt(heightFeetField.getText().toString());
-             heightInches = Integer.parseInt(heightInchesField.getText().toString());
-             weight = Float.parseFloat(weightField.getText().toString());
-             biscepLeft = Float.parseFloat(biscepLeftField.getText().toString());
-             biscepRight = Float.parseFloat(biscepRightField.getText().toString());
-             waist = Float.parseFloat(waistField.getText().toString());
-             BMI = Float.parseFloat(bmiField.getText().toString());
+            heightFeet = Integer.parseInt(heightFeetField.getText().toString());
+            heightInches = Integer.parseInt(heightInchesField.getText().toString());
+            weight = Float.parseFloat(weightField.getText().toString());
+            biscepLeft = Float.parseFloat(biscepLeftField.getText().toString());
+            biscepRight = Float.parseFloat(biscepRightField.getText().toString());
+            waist = Float.parseFloat(waistField.getText().toString());
+            BMI = Float.parseFloat(bmiField.getText().toString());
+            thighLeft = Float.parseFloat(thighLeftField.getText().toString());
+            thighRight = Float.parseFloat(thighRightField.getText().toString());
+
 
             editor.putInt("heightFeet", heightFeet);
             editor.putInt("heightInches", heightInches);
             editor.putFloat("weight", weight);
             editor.putFloat("biscepLeft", biscepLeft);
             editor.putFloat("biscepRight", biscepRight);
-            editor.putFloat("waist",waist);
+            editor.putFloat("waist", waist);
             editor.putFloat("BMI", BMI);
+            editor.putFloat("thighLeft",thighLeft);
+            editor.putFloat("thighRight",thighRight);
+
+            editor.commit();
 
             Log.i("HEIGHTINFOFEET", Integer.toString(heightFeet));
             Log.i("HEIGHTINFOINCHES", Integer.toString(heightInches));
@@ -119,6 +154,8 @@ public class bodyInfo extends AppCompatActivity {
             Log.i("BISCEPRIGHTINFO", Float.toString(biscepRight));
             Log.i("WAISTINFO", Float.toString(waist));
             Log.i("BMIINFO", Float.toString(BMI));
+            Log.i("THIGHLEFTINFO", Float.toString(thighLeft));
+            Log.i("THIGHRIGHTINFO",Float.toString(thighRight));
         }
 
     }

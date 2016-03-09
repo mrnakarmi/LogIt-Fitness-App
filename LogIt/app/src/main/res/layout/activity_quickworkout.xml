@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:id="@+id/minutes"
+        android:id="@+id/quickTimerMinutes"
         android:width="50dp"
         android:layout_alignBottom="@+id/time"
         android:layout_toRightOf="@+id/time"
@@ -53,9 +53,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="mins"
         android:id="@+id/minutesText"
-        android:layout_alignBottom="@+id/minutes"
-        android:layout_toRightOf="@+id/minutes"
-        android:layout_toEndOf="@+id/minutes" />
+        android:layout_alignBottom="@+id/quickTimerMinutes"
+        android:layout_toRightOf="@+id/quickTimerMinutes"
+        android:layout_toEndOf="@+id/quickTimerMinutes" />
 
     <Spinner
         android:id="@+id/quickFocus"
@@ -95,8 +95,8 @@
         android:ems="10"
         android:id="@+id/quickExcerciseSets"
         android:layout_alignBottom="@+id/quickSets"
-        android:layout_alignLeft="@+id/minutes"
-        android:layout_alignStart="@+id/minutes"
+        android:layout_alignLeft="@+id/quickTimerMinutes"
+        android:layout_alignStart="@+id/quickTimerMinutes"
         android:width="35dp" />
 
     <TextView
@@ -140,6 +140,27 @@
         android:layout_below="@+id/quickExcerciseReps"
         android:layout_toRightOf="@+id/quickWeight"
         android:layout_toEndOf="@+id/quickWeight" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/quickTimerSeconds"
+        android:layout_alignBottom="@+id/minutesText"
+        android:layout_toRightOf="@+id/minutesText"
+        android:layout_toEndOf="@+id/minutesText"
+        android:width="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="secs"
+        android:id="@+id/secondsText"
+        android:layout_alignBottom="@+id/quickTimerSeconds"
+        android:layout_toRightOf="@+id/quickTimerSeconds"
+        android:layout_toEndOf="@+id/quickTimerSeconds" />
 
 
 </RelativeLayout>
