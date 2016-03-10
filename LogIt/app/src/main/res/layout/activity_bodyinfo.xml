@@ -91,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Biscep Measurement(in):"
-        android:id="@+id/biscepMeasurement"
+        android:id="@+id/goalBiscepMeasurement"
         android:layout_below="@+id/quickWeight"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -104,21 +104,21 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/biscepLeft"
+        android:id="@+id/goalBiscepLeft"
         android:width="35dp"
-        android:layout_alignBottom="@+id/biscepMeasurement"
-        android:layout_toRightOf="@+id/biscepMeasurement"
-        android:layout_toEndOf="@+id/biscepMeasurement" />
+        android:layout_alignBottom="@+id/goalBiscepMeasurement"
+        android:layout_toRightOf="@+id/goalBiscepMeasurement"
+        android:layout_toEndOf="@+id/goalBiscepMeasurement" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Left"
-        android:id="@+id/biscepLeftText"
-        android:layout_alignBottom="@+id/biscepLeft"
-        android:layout_toRightOf="@+id/biscepLeft"
-        android:layout_toEndOf="@+id/biscepLeft"
+        android:id="@+id/goalBiscepLeftText"
+        android:layout_alignBottom="@+id/goalBiscepLeft"
+        android:layout_toRightOf="@+id/goalBiscepLeft"
+        android:layout_toEndOf="@+id/goalBiscepLeft"
         android:textSize="10dp" />
 
     <EditText
@@ -126,12 +126,12 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/biscepRight"
+        android:id="@+id/goalBiscepRight"
         android:width="35dp"
-        android:layout_alignBaseline="@+id/biscepLeft"
-        android:layout_alignBottom="@+id/biscepLeft"
-        android:layout_toRightOf="@+id/biscepLeftText"
-        android:layout_toEndOf="@+id/biscepLeftText" />
+        android:layout_alignBaseline="@+id/goalBiscepLeft"
+        android:layout_alignBottom="@+id/goalBiscepLeft"
+        android:layout_toRightOf="@+id/goalBiscepLeftText"
+        android:layout_toEndOf="@+id/goalBiscepLeftText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -139,17 +139,17 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Right"
         android:id="@+id/biscepRightText"
-        android:layout_alignBottom="@+id/biscepRight"
-        android:layout_toRightOf="@+id/biscepRight"
-        android:layout_toEndOf="@+id/biscepRight"
+        android:layout_alignBottom="@+id/goalBiscepRight"
+        android:layout_toRightOf="@+id/goalBiscepRight"
+        android:layout_toEndOf="@+id/goalBiscepRight"
         android:textSize="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Waist Measurment(in):"
-        android:id="@+id/waistMeasurement"
-        android:layout_below="@+id/biscepMeasurement"
+        android:id="@+id/goalWaistMeasurementText"
+        android:layout_below="@+id/goalBiscepMeasurement"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
@@ -159,10 +159,10 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/waist"
-        android:layout_alignBottom="@+id/waistMeasurement"
-        android:layout_toRightOf="@+id/waistMeasurement"
-        android:layout_toEndOf="@+id/waistMeasurement"
+        android:id="@+id/goalWaist"
+        android:layout_alignBottom="@+id/goalWaistMeasurementText"
+        android:layout_toRightOf="@+id/goalWaistMeasurementText"
+        android:layout_toEndOf="@+id/goalWaistMeasurementText"
         android:width="40dp" />
 
     <TextView
@@ -170,7 +170,7 @@
         android:layout_height="wrap_content"
         android:text="Body Mass Index(BMI):"
         android:id="@+id/bodyMassIndex"
-        android:layout_below="@+id/thighLeft"
+        android:layout_below="@+id/goalThighLeft"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
@@ -182,7 +182,7 @@
         android:ems="10"
         android:id="@+id/BMI"
         android:width="50dp"
-        android:layout_below="@+id/thighLeft"
+        android:layout_below="@+id/goalThighLeft"
         android:layout_toRightOf="@+id/bodyMassIndex"
         android:layout_toEndOf="@+id/bodyMassIndex" />
 
@@ -190,9 +190,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Thigh Measurment(in):"
-        android:id="@+id/thighMeasurement"
+        android:id="@+id/goalMeasurementText"
         android:layout_above="@+id/BMI"
-        android:layout_below="@+id/waistMeasurement"
+        android:layout_below="@+id/goalWaistMeasurementText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"/>
@@ -202,9 +202,9 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/thighLeft"
+        android:id="@+id/goalThighLeft"
         android:width="35dp"
-        android:layout_below="@+id/waist"
+        android:layout_below="@+id/goalWaist"
         android:layout_alignLeft="@+id/BMI"
         android:layout_alignStart="@+id/BMI" />
 
@@ -213,24 +213,24 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Left"
-        android:id="@+id/thighLeftText"
+        android:id="@+id/goalThighLeftText"
         android:textSize="10dp"
-        android:layout_alignBaseline="@+id/thighMeasurement"
-        android:layout_alignBottom="@+id/thighMeasurement"
-        android:layout_toRightOf="@+id/thighLeft"
-        android:layout_toEndOf="@+id/thighLeft" />
+        android:layout_alignBaseline="@+id/goalMeasurementText"
+        android:layout_alignBottom="@+id/goalMeasurementText"
+        android:layout_toRightOf="@+id/goalThighLeft"
+        android:layout_toEndOf="@+id/goalThighLeft" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/thighRight"
+        android:id="@+id/goalThighRight"
         android:width="35dp"
-        android:layout_alignBaseline="@+id/thighLeft"
-        android:layout_alignBottom="@+id/thighLeft"
-        android:layout_toRightOf="@+id/thighLeftText"
-        android:layout_toEndOf="@+id/thighLeftText" />
+        android:layout_alignBaseline="@+id/goalThighLeft"
+        android:layout_alignBottom="@+id/goalThighLeft"
+        android:layout_toRightOf="@+id/goalThighLeftText"
+        android:layout_toEndOf="@+id/goalThighLeftText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -239,10 +239,10 @@
         android:text="Right"
         android:id="@+id/thighRightText"
         android:textSize="10dp"
-        android:layout_alignBaseline="@+id/thighLeftText"
-        android:layout_alignBottom="@+id/thighLeftText"
-        android:layout_toRightOf="@+id/thighRight"
-        android:layout_toEndOf="@+id/thighRight" />
+        android:layout_alignBaseline="@+id/goalThighLeftText"
+        android:layout_alignBottom="@+id/goalThighLeftText"
+        android:layout_toRightOf="@+id/goalThighRight"
+        android:layout_toEndOf="@+id/goalThighRight" />
 
 
 </RelativeLayout>

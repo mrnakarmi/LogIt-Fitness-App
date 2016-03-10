@@ -29,8 +29,12 @@ public class HomeScreen extends AppCompatActivity {
         Log.i("MYAPP", "I AM IN CREATE WORKOUT");
     }
 
-    public void milestone(View v){
+    public void milestone(View v) {
         Log.i("MYAPP", "I AM IN MILESTONE");
+
+        Intent intent = new Intent(this,milestone.class);
+        startActivity(intent);
+
     }
 
     public void calendar(View v){

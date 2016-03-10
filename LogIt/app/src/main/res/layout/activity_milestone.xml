@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal Weight(lbs):"
+            android:id="@+id/goalWeightText"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp"
+            android:layout_below="@+id/feet"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/goalWeightPounds"
+            android:width="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/goalWeightText"
+            android:layout_toEndOf="@+id/goalWeightText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal Biscep Measurements(in):"
+            android:id="@+id/goalBiscepMeasurement"
+            android:layout_below="@+id/goalWeightText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:textIsSelectable="false"
+            android:textSize="15dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/goalBiscepLeft"
+            android:width="35dp"
+            android:layout_below="@+id/goalWeightPounds"
+            android:layout_toRightOf="@+id/goalBiscepMeasurement"
+            android:layout_toEndOf="@+id/goalBiscepMeasurement" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Left"
+            android:id="@+id/goalBiscepLeftText"
+            android:textSize="10dp"
+            android:layout_alignBottom="@+id/goalBiscepMeasurement"
+            android:layout_toRightOf="@+id/goalBiscepLeft"
+            android:layout_toEndOf="@+id/goalBiscepLeft" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/goalBiscepRight"
+            android:width="35dp"
+            android:layout_alignBaseline="@+id/goalBiscepLeft"
+            android:layout_alignBottom="@+id/goalBiscepLeft"
+            android:layout_toRightOf="@+id/goalBiscepLeftText"
+            android:layout_toEndOf="@+id/goalBiscepLeftText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Right"
+            android:id="@+id/goalBiscepRightText"
+            android:textSize="10dp"
+            android:layout_above="@+id/goalWaist"
+            android:layout_toRightOf="@+id/goalBiscepRight"
+            android:layout_toEndOf="@+id/goalBiscepRight" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal Waist Measurment(in):"
+            android:id="@+id/goalWaistMeasurementText"
+            android:layout_below="@+id/goalBiscepMeasurement"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/goalWaist"
+            android:width="40dp"
+            android:layout_below="@+id/goalBiscepMeasurement"
+            android:layout_toRightOf="@+id/goalWaistMeasurementText"
+            android:layout_toEndOf="@+id/goalWaistMeasurementText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Goal Thigh Measurement(in):"
+            android:id="@+id/goalMeasurementText"
+            android:layout_below="@+id/goalWaistMeasurementText"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/goalThighLeft"
+            android:width="35dp"
+            android:layout_below="@+id/goalWaistMeasurementText"
+            android:layout_toRightOf="@+id/goalMeasurementText"
+            android:layout_toEndOf="@+id/goalMeasurementText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Left"
+            android:id="@+id/goalThighLeftText"
+            android:textSize="10dp"
+            android:layout_alignBaseline="@+id/goalMeasurementText"
+            android:layout_alignBottom="@+id/goalMeasurementText"
+            android:layout_toRightOf="@+id/goalThighLeft"
+            android:layout_toEndOf="@+id/goalThighLeft" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/goalThighRight"
+            android:width="35dp"
+            android:layout_alignBaseline="@+id/goalThighLeft"
+            android:layout_alignBottom="@+id/goalThighLeft"
+            android:layout_toRightOf="@+id/goalThighLeftText"
+            android:layout_toEndOf="@+id/goalThighLeftText" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Right"
+            android:id="@+id/goalThighRightText"
+            android:textSize="10dp"
+            android:layout_alignTop="@+id/goalThighLeftText"
+            android:layout_toRightOf="@+id/goalThighRight"
+            android:layout_toEndOf="@+id/goalThighRight" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Current Progress"
+        android:id="@+id/button"
+        android:enabled="false"
+        android:textColor="#ff0000"
+        android:layout_below="@+id/goalThighLeft"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weight Progress:"
+        android:id="@+id/weightProgressText"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/weightProgressBar"
+        android:outlineProvider="paddedBounds"
+        android:progress="0"
+        android:indeterminate="false"
+        android:layout_above="@+id/weightProgressNumber"
+        android:layout_alignRight="@+id/goalBiscepRight"
+        android:layout_alignEnd="@+id/goalBiscepRight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="ProgressText"
+        android:id="@+id/weightProgressNumber"
+        android:visibility="visible"
+        android:layout_below="@+id/weightProgressText"
+        android:layout_toLeftOf="@+id/goalThighRight"
+        android:layout_toStartOf="@+id/goalThighRight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Left Biscep Progress:"
+        android:id="@+id/biscepLeftProgressText"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/weightProgressNumber"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/biscepLeftProgressBar"
+        android:layout_alignBottom="@+id/biscepLeftProgressText"
+        android:layout_alignLeft="@+id/weightProgressBar"
+        android:layout_alignStart="@+id/weightProgressBar"
+        android:layout_alignRight="@+id/weightProgressBar"
+        android:layout_alignEnd="@+id/weightProgressBar"
+        android:progress="0"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Progress Text"
+        android:id="@+id/biscepLeftProgressNumber"
+        android:layout_below="@+id/biscepLeftProgressText"
+        android:layout_alignLeft="@+id/weightProgressNumber"
+        android:layout_alignStart="@+id/weightProgressNumber" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Right Biscep Progress:"
+        android:id="@+id/biscepRightProgressText"
+        android:layout_below="@+id/biscepLeftProgressNumber"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/biscepRightProgressBar"
+        android:layout_alignTop="@+id/biscepRightProgressText"
+        android:layout_alignLeft="@+id/biscepLeftProgressBar"
+        android:layout_alignStart="@+id/biscepLeftProgressBar"
+        android:layout_alignRight="@+id/biscepLeftProgressBar"
+        android:layout_alignEnd="@+id/biscepLeftProgressBar"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Progress Text"
+        android:id="@+id/biscepRightProgressNumber"
+        android:layout_below="@+id/biscepRightProgressText"
+        android:layout_alignLeft="@+id/biscepLeftProgressNumber"
+        android:layout_alignStart="@+id/biscepLeftProgressNumber" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Waist Progress:"
+        android:id="@+id/waistProgressText"
+        android:layout_below="@+id/biscepRightProgressNumber"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/waistProgressBar"
+        android:layout_alignBottom="@+id/waistProgressText"
+        android:layout_alignLeft="@+id/biscepRightProgressBar"
+        android:layout_alignStart="@+id/biscepRightProgressBar"
+        android:layout_alignRight="@+id/biscepRightProgressBar"
+        android:layout_alignEnd="@+id/biscepRightProgressBar"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progress Text"
+        android:id="@+id/waistProgressNumber"
+        android:layout_below="@+id/waistProgressBar"
+        android:layout_alignLeft="@+id/biscepRightProgressNumber"
+        android:layout_alignStart="@+id/biscepRightProgressNumber" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thigh Left Progress:"
+        android:id="@+id/thighLeftProgressText"
+        android:layout_below="@+id/waistProgressNumber"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/thighLeftProgressBar"
+        android:layout_alignTop="@+id/thighLeftProgressText"
+        android:layout_alignLeft="@+id/waistProgressBar"
+        android:layout_alignStart="@+id/waistProgressBar"
+        android:layout_alignRight="@+id/waistProgressBar"
+        android:layout_alignEnd="@+id/waistProgressBar"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Progress Text"
+        android:id="@+id/thighLeftProgressNumber"
+        android:layout_below="@+id/thighLeftProgressBar"
+        android:layout_alignLeft="@+id/waistProgressNumber"
+        android:layout_alignStart="@+id/waistProgressNumber" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thigh Right Progress:"
+        android:id="@+id/thighRightProgressText"
+        android:layout_below="@+id/thighLeftProgressNumber"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/thighRightProgressBar"
+        android:layout_alignTop="@+id/thighRightProgressText"
+        android:layout_alignLeft="@+id/thighLeftProgressBar"
+        android:layout_alignStart="@+id/thighLeftProgressBar"
+        android:layout_alignRight="@+id/thighLeftProgressBar"
+        android:layout_alignEnd="@+id/thighLeftProgressBar"
+        android:indeterminate="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Progress Text"
+        android:id="@+id/thighRightProgressNumber"
+        android:layout_below="@+id/thighRightProgressText"
+        android:layout_alignLeft="@+id/biscepLeftProgressNumber"
+        android:layout_alignStart="@+id/biscepLeftProgressNumber" />
+
+</RelativeLayout>

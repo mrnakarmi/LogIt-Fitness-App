@@ -2,16 +2,13 @@ package danman.logit;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * Created by Raman on 3/7/2016.
@@ -32,19 +29,19 @@ public class bodyInfo extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedinstanceState){
-        super.onCreate(savedinstanceState);
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bodyinfo);
 
         heightFeetField = (EditText)findViewById(R.id.feet);
         heightInchesField = (EditText)findViewById(R.id.inches);
         weightField =(EditText)findViewById(R.id.pounds);
-        biscepLeftField = (EditText)findViewById(R.id.biscepLeft);
-        biscepRightField = (EditText)findViewById(R.id.biscepRight);
-        waistField = (EditText)findViewById(R.id.waist);
+        biscepLeftField = (EditText)findViewById(R.id.goalBiscepLeft);
+        biscepRightField = (EditText)findViewById(R.id.goalBiscepRight);
+        waistField = (EditText)findViewById(R.id.goalWaist);
         bmiField = (EditText)findViewById(R.id.BMI);
-        thighLeftField = (EditText)findViewById(R.id.thighLeft);
-        thighRightField = (EditText)findViewById(R.id.thighRight);
+        thighLeftField = (EditText)findViewById(R.id.goalThighLeft);
+        thighRightField = (EditText)findViewById(R.id.goalThighRight);
 
         addListeners();
     }
