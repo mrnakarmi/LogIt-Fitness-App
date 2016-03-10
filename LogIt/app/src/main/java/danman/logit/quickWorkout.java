@@ -124,12 +124,12 @@ public class quickWorkout extends AppCompatActivity {
         timeSeconds = (TextView)findViewById(R.id.quickTimerSeconds);
         long minutes,seconds;
 
-        if(timeMinutes.getText().toString().isEmpty()){
+        if(timeMinutes.getText().toString().isEmpty() || timeMinutes.getText().toString().equals("")){
             minutes = 0;
         }else{
             minutes = Long.parseLong(timeMinutes.getText().toString());
         }
-        if(timeSeconds.getText().toString().isEmpty()){
+        if(timeSeconds.getText().toString().isEmpty() || timeSeconds.getText().toString().equals("")){
             seconds = 0;
         }else{
             seconds = Long.parseLong(timeSeconds.getText().toString());
@@ -146,8 +146,11 @@ public class quickWorkout extends AppCompatActivity {
         if(timer.getText().equals("Start Timer")){
             timer.setText("Cancel");
 
-            if(timeMinutes.getText().toString().isEmpty() && timeSeconds.getText().toString().isEmpty()){
+            if(timeMinutes.getText().toString().isEmpty() && timeSeconds.getText().toString().isEmpty()
+                    && timeMinutes.getText().toString().equals("") && timeSeconds.getText().toString().equals("")){
                 Log.i("MYAPP","time field is empty");
+                timer.setText("Start Timer");
+                return;
 
             }else {
 
@@ -157,12 +160,13 @@ public class quickWorkout extends AppCompatActivity {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         mTextField.setVisibility(View.VISIBLE);
-                        mTextField.setText("seconds remaining: " + millisUntilFinished / 1000 + " secs");
+                        mTextField.setText(millisUntilFinished / 1000 + " secs");
                     }
 
                     @Override
                     public void onFinish() {
                         mTextField.setVisibility(View.INVISIBLE);
+                        timer.setText("Start Timer");
                     }
                 }.start();
 
@@ -177,6 +181,8 @@ public class quickWorkout extends AppCompatActivity {
     }
 
     public void startStopWatch(View v){
+
+        stopper.setVisibility(View.VISIBLE);
 
         if(isRunning == false) {
             isRunning = true;

@@ -7,12 +7,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="Timer Field"
         android:id="@+id/timer"
         android:textSize="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="112dp" />
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/quickExcerciseWeight"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -20,19 +21,18 @@
         android:text="Start Timer"
         android:id="@+id/startTimer"
         android:onClick="timeStart"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/minutesText"
-        android:layout_toEndOf="@+id/minutesText"
-        android:layout_marginBottom="42dp" />
+        android:layout_alignBottom="@+id/timer"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="23dp"
+        android:layout_marginEnd="23dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Time:"
         android:id="@+id/time"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="38dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -73,20 +73,20 @@
         android:layout_height="wrap_content"
         android:text="What will you be working on?"
         android:id="@+id/textView2"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="23dp"
         android:layout_below="@+id/time"
-        android:layout_alignLeft="@+id/time"
-        android:layout_alignStart="@+id/time" />
+        android:layout_alignRight="@+id/chronometer"
+        android:layout_alignEnd="@+id/chronometer" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sets:"
         android:id="@+id/quickSets"
+        android:layout_marginTop="25dp"
         android:layout_below="@+id/quickFocus"
-        android:layout_alignLeft="@+id/quickFocus"
-        android:layout_alignStart="@+id/quickFocus"
-        android:layout_marginTop="61dp" />
+        android:layout_toLeftOf="@+id/quickExcerciseSets"
+        android:layout_toStartOf="@+id/quickExcerciseSets" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -168,17 +168,12 @@
         android:text="Start Stopwatch"
         android:id="@+id/stopwatch"
         android:onClick="startStopWatch"
-        android:layout_alignTop="@+id/timer"
-        android:layout_toLeftOf="@+id/chronometer"
-        android:layout_toStartOf="@+id/chronometer" />
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/timer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <Chronometer
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chronometer"
-        android:layout_alignTop="@+id/quickExcerciseSets"
-        android:layout_toRightOf="@+id/quickTimerSeconds"
-        android:layout_toEndOf="@+id/quickTimerSeconds" />
+
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -188,8 +183,19 @@
         android:id="@+id/reset"
         android:onClick="resetStopwatch"
         android:layout_alignTop="@+id/stopwatch"
-        android:layout_toRightOf="@+id/timer"
-        android:layout_toEndOf="@+id/timer" />
+        android:layout_alignRight="@+id/startTimer"
+        android:layout_alignEnd="@+id/startTimer" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer"
+        android:layout_alignBottom="@+id/stopwatch"
+        android:layout_toLeftOf="@+id/startTimer"
+        android:layout_toStartOf="@+id/startTimer"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:visibility="invisible"/>
 
 
 </RelativeLayout>
