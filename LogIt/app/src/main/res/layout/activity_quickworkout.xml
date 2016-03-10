@@ -162,5 +162,34 @@
         android:layout_toRightOf="@+id/quickTimerSeconds"
         android:layout_toEndOf="@+id/quickTimerSeconds" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Stopwatch"
+        android:id="@+id/stopwatch"
+        android:onClick="startStopWatch"
+        android:layout_alignTop="@+id/timer"
+        android:layout_toLeftOf="@+id/chronometer"
+        android:layout_toStartOf="@+id/chronometer" />
+
+    <Chronometer
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chronometer"
+        android:layout_alignTop="@+id/quickExcerciseSets"
+        android:layout_toRightOf="@+id/quickTimerSeconds"
+        android:layout_toEndOf="@+id/quickTimerSeconds" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:id="@+id/reset"
+        android:onClick="resetStopwatch"
+        android:layout_alignTop="@+id/stopwatch"
+        android:layout_toRightOf="@+id/timer"
+        android:layout_toEndOf="@+id/timer" />
+
 
 </RelativeLayout>

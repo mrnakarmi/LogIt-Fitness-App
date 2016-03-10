@@ -2,6 +2,7 @@ package danman.logit;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,15 +28,19 @@ public class quickWorkout extends AppCompatActivity {
     EditText setsValue,repsValue,weightValue;
     Button timer;
     CountDownTimer myCountDownTimer = null;
+    Button stopwatch;
+    Chronometer stopper;
+    boolean isRunning;
 
 
     @Override
     protected void onCreate(Bundle savedinstanceState){
         super.onCreate(savedinstanceState);
         setContentView(R.layout.activity_quickworkout);
-
+        isRunning = false;
+        stopper = (Chronometer)findViewById(R.id.chronometer);
         timer = (Button)findViewById(R.id.startTimer);
-
+        stopwatch = (Button)findViewById(R.id.stopwatch);
         sets = (TextView)findViewById(R.id.quickSets);
         reps = (TextView)findViewById(R.id.quickRepitions);
         weight = (TextView)findViewById(R.id.quickWeight);
@@ -168,6 +174,27 @@ public class quickWorkout extends AppCompatActivity {
             mTextField.setVisibility(View.INVISIBLE);
             timer.setText("Start Timer");
         }
+    }
+
+    public void startStopWatch(View v){
+
+        if(isRunning == false) {
+            isRunning = true;
+            stopper.start();
+            stopwatch.setText("Pause");
+        }
+        else{
+            stopper.stop();
+            isRunning = false;
+            stopwatch.setText("Start Stopwatch");
+        }
+    }
+
+    public void resetStopwatch(View v){
+        stopper.stop();
+        stopper.setBase(SystemClock.elapsedRealtime());
+        isRunning = false;
+        stopwatch.setText("Start Stopwatch");
     }
 
 
