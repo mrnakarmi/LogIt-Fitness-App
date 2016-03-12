@@ -57,16 +57,20 @@ public class quickWorkout extends AppCompatActivity {
         weightValue.setVisibility(View.INVISIBLE);
 
         dropdown = (Spinner)findViewById(R.id.quickFocus);
-        String[] items = new String[]{"Select","Arms","Legs","Core","Cardio"};
+        String[] items = new String[]{"Select","Arms","Legs","Back","Chest", "Abs","Cardio"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,items);
         dropdown.setAdapter(adapter);
 
-        addListeners();
 
+    }
+    @Override
+    public void onResume(){
+        addListeners();
+        super.onResume();
     }
 
     public void addListeners(){
-        dropdown = (Spinner)findViewById(R.id.quickFocus);
+
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             protected Adapter initializedAdapter=null;
             @Override

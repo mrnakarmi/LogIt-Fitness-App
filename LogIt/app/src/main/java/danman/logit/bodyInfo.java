@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by Raman on 3/7/2016.
@@ -154,6 +155,8 @@ public class bodyInfo extends AppCompatActivity {
             Log.i("THIGHLEFTINFO", Float.toString(thighLeft));
             Log.i("THIGHRIGHTINFO",Float.toString(thighRight));
         }
+
+        Toast.makeText(this,"INFO HAS BEEN UPDATED",Toast.LENGTH_SHORT).show();
 
     }
 

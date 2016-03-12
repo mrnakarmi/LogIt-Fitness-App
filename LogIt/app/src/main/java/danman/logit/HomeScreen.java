@@ -27,6 +27,9 @@ public class HomeScreen extends AppCompatActivity {
 
     public void createWorkout(View v){
         Log.i("MYAPP", "I AM IN CREATE WORKOUT");
+
+        Intent intent = new Intent (this,createWorkout.class);
+        startActivity(intent);
     }
 
     public void milestone(View v) {

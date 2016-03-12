@@ -59,11 +59,11 @@
         android:layout_height="wrap_content"
         android:text="Update Info"
         android:id="@+id/updateInfo"
-        android:layout_marginBottom="74dp"
         android:onClick="updateInfo"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/inchesText"
-        android:layout_alignStart="@+id/inchesText" />
+        android:layout_marginTop="51dp"
+        android:layout_below="@+id/BMI"
+        android:layout_toLeftOf="@+id/thighRightText"
+        android:layout_toStartOf="@+id/thighRightText" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -243,6 +243,16 @@
         android:layout_alignBottom="@+id/goalThighLeftText"
         android:layout_toRightOf="@+id/goalThighRight"
         android:layout_toEndOf="@+id/goalThighRight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BE SURE TO UPDATE INFO!"
+        android:id="@+id/textView"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#0026ff" />
 
 
 </RelativeLayout>
