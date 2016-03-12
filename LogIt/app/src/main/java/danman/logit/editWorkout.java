@@ -18,6 +18,7 @@ public class editWorkout extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editworkout);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         settings = PreferenceManager.getDefaultSharedPreferences(this);
       boolean bob =  settings.getBoolean("workout1",false);
