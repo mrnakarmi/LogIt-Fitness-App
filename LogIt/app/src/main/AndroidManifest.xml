@@ -49,6 +49,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeScreen"/>
         </activity>
+        <activity
+            android:name=".editWorkout"
+            android:label="editWorkout"
+            android:parentActivityName="danman.logit.createWorkout">
+        </activity>
     </application>
 
 </manifest>

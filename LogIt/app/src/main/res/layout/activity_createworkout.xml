@@ -25,4 +25,69 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="workout 1 "
+        android:id="@+id/workout1"
+        android:layout_marginTop="68dp"
+        android:checked="false"
+        android:layout_below="@+id/chooseFocus"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="workout 2"
+        android:id="@+id/workout2"
+        android:layout_below="@+id/workout1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="workout 3"
+        android:id="@+id/workout3"
+        android:layout_below="@+id/workout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="workout 4"
+        android:id="@+id/workout4"
+        android:layout_below="@+id/workout3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp"
+        android:checked="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select what excercises you will be doing:"
+        android:id="@+id/excerciseSelectText"
+        android:layout_below="@+id/chooseFocus"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/createWorkoutFocus"
+        android:layout_toStartOf="@+id/createWorkoutFocus"
+        android:layout_marginBottom="39dp"
+        android:onClick="editWorkout"/>
+
 </RelativeLayout>
