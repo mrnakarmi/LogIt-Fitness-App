@@ -19,10 +19,7 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 /**
  * Created by Raman on 3/10/2016.
@@ -38,6 +35,7 @@ public class createWorkout extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createworkout);
         context = getApplicationContext();
@@ -46,16 +44,18 @@ public class createWorkout extends AppCompatActivity {
         workoutItems.setAdapter(adapter);
 
         excerciseSelectText = (TextView)findViewById(R.id.excerciseSelectText);
-        workout1 = (CheckBox)findViewById(R.id.workout1);
-        workout2 = (CheckBox)findViewById(R.id.workout2);
-        workout3 = (CheckBox)findViewById(R.id.workout3);
-        workout4 = (CheckBox)findViewById(R.id.workout4);
+        workout1 = (CheckBox)findViewById(R.id.workout1Title);
+        workout2 = (CheckBox)findViewById(R.id.workout2Title);
+        workout3 = (CheckBox)findViewById(R.id.workout3Title);
+        workout4 = (CheckBox)findViewById(R.id.workout4Title);
 
         excerciseSelectText.setVisibility(View.INVISIBLE);
         workout1.setVisibility(View.INVISIBLE);
         workout2.setVisibility(View.INVISIBLE);
         workout3.setVisibility(View.INVISIBLE);
         workout4.setVisibility(View.INVISIBLE);
+
+        addListeners();
 
 
     }
@@ -64,8 +64,8 @@ public class createWorkout extends AppCompatActivity {
     @Override
     public void onResume() {
         context = getApplicationContext();
-        addListeners();
-        saveExcercises();
+        Log.i("HELLOINFO","I AM ONRESUME");
+
         super.onResume();
     }
 

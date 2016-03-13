@@ -2,4 +2,314 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WORKOUT 1 PLACEHOLDER"
+        android:id="@+id/workout1Title"
+        android:layout_marginTop="15dp"
+        android:textSize="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout1Sets"
+        android:width="40dp"
+        android:layout_below="@+id/workout1Title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="sets"
+        android:id="@+id/workout1SetsText"
+        android:layout_alignBottom="@+id/workout1Sets"
+        android:layout_toRightOf="@+id/workout1Sets"
+        android:layout_toEndOf="@+id/workout1Sets" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout1Reps"
+        android:layout_alignBottom="@+id/workout1Sets"
+        android:layout_toRightOf="@+id/workout1SetsText"
+        android:layout_toEndOf="@+id/workout1SetsText"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="reps"
+        android:id="@+id/workout1RepsText"
+        android:layout_alignBottom="@+id/workout1Reps"
+        android:layout_toRightOf="@+id/workout1Reps"
+        android:layout_toEndOf="@+id/workout1Reps" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout1Weight"
+        android:layout_alignBottom="@+id/workout1Reps"
+        android:layout_toRightOf="@+id/workout1RepsText"
+        android:layout_toEndOf="@+id/workout1RepsText"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="weight"
+        android:id="@+id/workout1WeightText"
+        android:layout_alignBottom="@+id/workout1Weight"
+        android:layout_toRightOf="@+id/workout1Weight"
+        android:layout_toEndOf="@+id/workout1Weight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WORKOUT 2 PLACEHOLDER"
+        android:id="@+id/workout2Title"
+        android:layout_marginTop="24dp"
+        android:textSize="15dp"
+        android:layout_below="@+id/workout1RepsText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout2Sets"
+        android:width="40dp"
+        android:layout_below="@+id/workout2Title"
+        android:layout_alignLeft="@+id/workout1Sets"
+        android:layout_alignStart="@+id/workout1Sets" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="sets"
+        android:id="@+id/workout2SetsText"
+        android:layout_above="@+id/workout3Title"
+        android:layout_toLeftOf="@+id/workout1Reps"
+        android:layout_toStartOf="@+id/workout1Reps" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout2Reps"
+        android:layout_alignBottom="@+id/workout2Sets"
+        android:layout_toRightOf="@+id/workout2SetsText"
+        android:layout_toEndOf="@+id/workout2SetsText"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="reps"
+        android:id="@+id/workout2RepsText"
+        android:layout_alignBottom="@+id/workout2Reps"
+        android:layout_toRightOf="@+id/workout2Reps"
+        android:layout_toEndOf="@+id/workout2Reps" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout2Weight"
+        android:layout_alignBottom="@+id/workout2Reps"
+        android:layout_toRightOf="@+id/workout2RepsText"
+        android:layout_toEndOf="@+id/workout2RepsText"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="weight"
+        android:id="@+id/workout2WeightText"
+        android:layout_alignBottom="@+id/workout2Weight"
+        android:layout_toRightOf="@+id/workout2Weight"
+        android:layout_toEndOf="@+id/workout2Weight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WORKOUT 3 PLACEHOLDER"
+        android:id="@+id/workout3Title"
+        android:layout_marginTop="24dp"
+        android:textSize="15dp"
+        android:layout_below="@+id/workout2RepsText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout3Sets"
+        android:width="40dp"
+        android:layout_below="@+id/workout3Title"
+        android:layout_toLeftOf="@+id/workout2SetsText"
+        android:layout_toStartOf="@+id/workout2SetsText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="sets"
+        android:id="@+id/workout3SetsText"
+        android:layout_alignBottom="@+id/workout3Sets"
+        android:layout_toLeftOf="@+id/workout2Reps"
+        android:layout_toStartOf="@+id/workout2Reps" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout3Reps"
+        android:layout_alignBottom="@+id/workout3Sets"
+        android:layout_toRightOf="@+id/workout3SetsText"
+        android:layout_toEndOf="@+id/workout3SetsText"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="reps"
+        android:id="@+id/workout3RepsText"
+        android:layout_alignBottom="@+id/workout3Reps"
+        android:layout_toRightOf="@+id/workout3Reps"
+        android:layout_toEndOf="@+id/workout3Reps" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout3Weight"
+        android:layout_alignBottom="@+id/workout3Reps"
+        android:layout_toRightOf="@+id/workout3RepsText"
+        android:layout_toEndOf="@+id/workout3RepsText"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="weight"
+        android:id="@+id/workout3WeightText"
+        android:layout_alignBottom="@+id/workout3Weight"
+        android:layout_toRightOf="@+id/workout3Weight"
+        android:layout_toEndOf="@+id/workout3Weight" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WORKOUT 4 PLACEHOLDER"
+        android:id="@+id/workout4Title"
+        android:layout_marginTop="24dp"
+        android:textSize="15dp"
+        android:layout_below="@+id/workout3RepsText"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout4Sets"
+        android:width="40dp"
+        android:layout_below="@+id/workout4Title"
+        android:layout_toLeftOf="@+id/workout3SetsText"
+        android:layout_toStartOf="@+id/workout3SetsText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="sets"
+        android:id="@+id/workout4SetsText"
+        android:layout_alignBottom="@+id/workout4Sets"
+        android:layout_alignLeft="@+id/workout3SetsText"
+        android:layout_alignStart="@+id/workout3SetsText" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout4Reps"
+        android:layout_alignBottom="@+id/workout4Sets"
+        android:layout_toRightOf="@+id/workout4SetsText"
+        android:layout_toEndOf="@+id/workout4SetsText"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="reps"
+        android:id="@+id/workout4RepsText"
+        android:layout_alignBottom="@+id/workout4Reps"
+        android:layout_toRightOf="@+id/workout4Reps"
+        android:layout_toEndOf="@+id/workout4Reps" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/workout4Weight"
+        android:layout_alignBottom="@+id/workout4Reps"
+        android:layout_toRightOf="@+id/workout4RepsText"
+        android:layout_toEndOf="@+id/workout4RepsText"
+        android:layout_marginLeft="47dp"
+        android:layout_marginStart="47dp"
+        android:width="40dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="weight"
+        android:id="@+id/workout4WeightText"
+        android:layout_alignBottom="@+id/workout4Weight"
+        android:layout_toRightOf="@+id/workout4Weight"
+        android:layout_toEndOf="@+id/workout4Weight" />
+
 </RelativeLayout>
