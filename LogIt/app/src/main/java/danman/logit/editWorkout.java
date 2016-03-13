@@ -1,6 +1,10 @@
 package danman.logit;
 
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +13,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by Raman on 3/12/2016.
  */
 public class editWorkout extends AppCompatActivity {
 
     SharedPreferences settings;
-
+    Context context;
+    workoutDatabaseDbHelper mDbHelper;
     boolean workout1Boolean, workout2Boolean, workout3Boolean,workout4Boolean;
     TextView workout1Title,workout2Title,workout3Title,workout4Title;
     TextView workout1SetsText, workout2SetsText,workout3SetsText,workout4SetsText;
@@ -33,7 +40,8 @@ public class editWorkout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editworkout);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
+        context = getApplicationContext();
+        mDbHelper = new workoutDatabaseDbHelper(context);
         settings = PreferenceManager.getDefaultSharedPreferences(this);
 
         workout1Title = (TextView)findViewById(R.id.workout1Title);
@@ -124,6 +132,7 @@ public class editWorkout extends AppCompatActivity {
         setExcerciseInfo();
         loadExcerciseInfo();
         super.onResume();
+        context = getApplicationContext();
     }
 
     public void setExcerciseInfo(){
@@ -140,7 +149,7 @@ public class editWorkout extends AppCompatActivity {
                 workout1Title.setText("Upright Row");
                 workout2Title.setText("Overhead Tricep Extensions");
                 workout3Title.setText("Bent-over Bow");
-                workout4Title.setText("Biscep Curl");
+                workout4Title.setText("Bicep Curl");
 
             }else if(workoutItem.equals("Legs")){
 
@@ -194,6 +203,7 @@ public class editWorkout extends AppCompatActivity {
             workout1RepsField.setVisibility(View.VISIBLE);
             workout1WeightText.setVisibility(View.VISIBLE);
             workout1WeightField.setVisibility(View.VISIBLE);
+            //getRow(workout1Title.getText().toString(), "1", workout1SetsField, workout1RepsField, workout1WeightField);
         }
 
         if(workout2Boolean == true){
@@ -204,6 +214,7 @@ public class editWorkout extends AppCompatActivity {
             workout2RepsField.setVisibility(View.VISIBLE);
             workout2WeightText.setVisibility(View.VISIBLE);
             workout2WeightField.setVisibility(View.VISIBLE);
+            //getRow(workout2Title.getText().toString(), "2", workout2SetsField, workout2RepsField, workout2WeightField);
         }
 
         if(workout3Boolean == true){
@@ -214,6 +225,7 @@ public class editWorkout extends AppCompatActivity {
             workout3RepsField.setVisibility(View.VISIBLE);
             workout3WeightText.setVisibility(View.VISIBLE);
             workout3WeightField.setVisibility(View.VISIBLE);
+            //getRow(workout3Title.getText().toString(), "3", workout3SetsField, workout3RepsField, workout3WeightField);
         }
 
         if(workout4Boolean == true){
@@ -224,8 +236,118 @@ public class editWorkout extends AppCompatActivity {
             workout4RepsField.setVisibility(View.VISIBLE);
             workout4WeightText.setVisibility(View.VISIBLE);
             workout4WeightField.setVisibility(View.VISIBLE);
+            //getRow(workout4Title.getText().toString(), "4", workout4SetsField, workout4RepsField, workout4WeightField);
         }
 
 
+    }
+
+    public void saveWorkout(View v){
+        if(workout1Boolean) {
+            System.out.println("the text 1 is: " + workout1Title.getText().toString());
+            saveRow(workout1Title.getText().toString(), Integer.parseInt(workout1SetsField.getText().toString()),
+                    Integer.parseInt(workout1RepsField.getText().toString()), Integer.parseInt(workout1WeightField.getText().toString()), "1");
+        }
+        if(workout2Boolean) {
+            System.out.println("the text 2 is: " + workout2Title.getText().toString());
+            saveRow(workout2Title.getText().toString(), Integer.parseInt(workout2SetsField.getText().toString()),
+                    Integer.parseInt(workout2RepsField.getText().toString()), Integer.parseInt(workout2WeightField.getText().toString()), "2");
+        }
+        if(workout3Boolean) {
+            System.out.println("the text 3 is: " + workout3Title.getText().toString());
+            saveRow(workout3Title.getText().toString(), Integer.parseInt(workout3SetsField.getText().toString()),
+                    Integer.parseInt(workout3RepsField.getText().toString()), Integer.parseInt(workout3WeightField.getText().toString()), "3");
+        }
+        if(workout4Boolean) {
+            System.out.println("the text 4 is: " + workout4Title.getText().toString());
+            saveRow(workout4Title.getText().toString(), Integer.parseInt(workout4SetsField.getText().toString()),
+                    Integer.parseInt(workout4RepsField.getText().toString()), Integer.parseInt(workout4WeightField.getText().toString()), "4");
+        }
+
+    }
+    //the num field is to ensure only one entry will exist for each workout type (it is unique)
+    public void saveRow(String workoutName, int sets, int reps, int weight, String num){
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        //variables to insert
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = sdf.format(new java.util.Date());
+
+
+
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY, workoutItem);
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_SETS, sets);
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_REPS, reps);
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_WEIGHT, weight);
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_NAME, workoutName);
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_TIME, time);
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_UNIQUE_WORKOUT, workoutName + num);
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insertWithOnConflict(
+                workoutDatabase.gymWorkout.TABLE_NAME,
+                "null",
+                values, SQLiteDatabase.CONFLICT_REPLACE);
+        Log.i("INSERTEDROWID", String.valueOf(newRowId));
+    }
+
+    public void getRow(String workoutName, String num, EditText sets, EditText reps, EditText weight){
+        SQLiteDatabase dbRead = mDbHelper.getReadableDatabase();
+
+        // Define a projection that specifies which columns from the database
+        // you will actually use after this query.
+        String[] projection = {
+                workoutDatabase.gymWorkout._ID,
+                workoutDatabase.gymWorkout.COLUMN_NAME_SETS,
+                workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY,
+                workoutDatabase.gymWorkout.COLUMN_NAME_REPS,
+                workoutDatabase.gymWorkout.COLUMN_NAME_WEIGHT,
+                workoutDatabase.gymWorkout.COLUMN_NAME_NAME,
+                workoutDatabase.gymWorkout.COLUMN_NAME_TIME
+        };
+
+        String selection = "uniqueWorkout = ?";
+        String[] selectionArgs = {workoutName + num};
+
+
+
+        // How you want the results sorted in the resulting Cursor
+        String sortOrder =
+                workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY + " DESC";
+
+        Cursor c = dbRead.query(
+                workoutDatabase.gymWorkout.TABLE_NAME,  // The table to query
+                projection,                               // The columns to return
+                selection,                                // The columns for the WHERE clause
+                selectionArgs,                            // The values for the WHERE clause
+                null,                                     // don't group the rows
+                null,                                     // don't filter by row groups
+                sortOrder                                 // The sort order
+        );
+        if(c.getCount() != 0) {
+            //moveToLast is not necesarry, could use moveToFirst instead
+            c.moveToLast();
+            String setsNum = c.getString(
+                    c.getColumnIndexOrThrow(workoutDatabase.gymWorkout.COLUMN_NAME_SETS)
+            );
+            String repsNum = c.getString(
+                    c.getColumnIndexOrThrow(workoutDatabase.gymWorkout.COLUMN_NAME_REPS)
+            );
+            String weightNum = c.getString(
+                    c.getColumnIndexOrThrow(workoutDatabase.gymWorkout.COLUMN_NAME_WEIGHT)
+            );
+            Log.i("NUMSETS", setsNum);
+            sets.setText(setsNum);
+            reps.setText(repsNum);
+            weight.setText(weightNum);
+        }else{
+            c.close();
+            Log.i("DBCLOSE", "db is closed");
+        }
     }
 }

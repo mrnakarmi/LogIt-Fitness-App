@@ -82,12 +82,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button2"
+        android:text="Edit Workout"
+        android:id="@+id/editWorkout"
+        android:layout_marginBottom="41dp"
+        android:onClick="editWorkout"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/createWorkoutFocus"
-        android:layout_toStartOf="@+id/createWorkoutFocus"
-        android:layout_marginBottom="39dp"
-        android:onClick="editWorkout"/>
+        android:layout_alignRight="@+id/excerciseSelectText"
+        android:layout_alignEnd="@+id/excerciseSelectText" />
 
 </RelativeLayout>

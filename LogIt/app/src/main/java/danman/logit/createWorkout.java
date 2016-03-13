@@ -123,7 +123,7 @@ public class createWorkout extends AppCompatActivity {
                         workout1.setText("Upright Row");
                         workout2.setText("Overhead Tricep Extensions");
                         workout3.setText("Bent-over Row");
-                        workout4.setText("Biscep Curl");
+                        workout4.setText("Bicep Curl");
 
                     } else if (selected.equals("Legs")) {
 

@@ -312,4 +312,13 @@
         android:layout_toRightOf="@+id/workout4Weight"
         android:layout_toEndOf="@+id/workout4Weight" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Workout"
+        android:id="@+id/saveWorkout"
+        android:onClick="saveWorkout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
