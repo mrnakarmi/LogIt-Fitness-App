@@ -34,7 +34,8 @@ public class MyAdapter extends ArrayAdapter<ListElement> {
         LinearLayout newView;
 
         final ListElement w = getItem(position);
-        aList = w.a;
+        aList = w.a; //They are both referring to the same object;
+        //to create a shallow copy ArrayList<ListElement> = new ArrayList <ListElement>(w.a);
 
         //inflate a new view if necessary.
         if(convertView == null ){
