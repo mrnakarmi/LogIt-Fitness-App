@@ -11,15 +11,15 @@ import java.util.ArrayList;
  */
 public class savedWorkouts extends AppCompatActivity {
 
+    private MyAdapter aa;
+    private ArrayList<ListElement> aList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_savedworkouts);
     }
 
-    private MyAdapter aa;
-
-    private ArrayList<ListElement> aList;
 
     @Override
     public void onResume(){
@@ -41,9 +41,9 @@ public class savedWorkouts extends AppCompatActivity {
         aList.clear();
 
         //probably have to send in workoutInfo as well I think
-        for(int i = 1; i < 20; i++) {
+        for(int i = 1; i < 10; i++) {
             String workoutName = "This is workout number: "+i;
-            aList.add(new ListElement(workoutName, "info"));
+            aList.add(new ListElement(workoutName, "info",aList));
         }
 
         aa.notifyDataSetChanged();

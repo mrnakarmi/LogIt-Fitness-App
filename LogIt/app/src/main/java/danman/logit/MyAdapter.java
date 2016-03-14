@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class MyAdapter extends ArrayAdapter<ListElement> {
 
     int resource;
     Context context;
+    private ArrayList<ListElement> aList = new ArrayList<ListElement>();
 
     public MyAdapter(Context _context,int _resource, List<ListElement> items){
         super(_context,_resource,items);
@@ -28,10 +30,11 @@ public class MyAdapter extends ArrayAdapter<ListElement> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(final int position, View convertView, ViewGroup parent){
         LinearLayout newView;
 
-        ListElement w = getItem(position);
+        final ListElement w = getItem(position);
+        aList = w.a;
 
         //inflate a new view if necessary.
         if(convertView == null ){
@@ -45,19 +48,28 @@ public class MyAdapter extends ArrayAdapter<ListElement> {
 
         //Fills in the view
         TextView workoutName = (TextView) newView.findViewById(R.id.itemText);
-        Button b = (Button) newView.findViewById(R.id.itemInfo);
+        Button info = (Button) newView.findViewById(R.id.itemInfo);
+        Button delete = (Button) newView.findViewById(R.id.itemDelete);
 
         workoutName.setText(w.workoutName);
 
-        b.setOnClickListener(new View.OnClickListener() {
+        info.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
 
                 //do something when the info button is clicked
                 //show the excercises, their sets, reps and weight;
 
-                Toast.makeText(context,"Hello there",Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, Integer.toString(position), Toast.LENGTH_SHORT).show();
                 //Toast.makeText(this, "INFO HAS BEEN UPDATED", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                aList.remove(w);
+                notifyDataSetChanged();
             }
         });
 
