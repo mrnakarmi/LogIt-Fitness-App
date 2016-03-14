@@ -26,10 +26,10 @@
         android:text="Create Workout Plan"
         android:id="@+id/createWorkout"
         android:onClick="createWorkout"
-        android:layout_below="@+id/milestone"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/bodyInfo"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="83dp" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -60,4 +60,16 @@
         android:onClick="quickWorkout"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Saved Workouts"
+        android:id="@+id/savedWorkouts"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/createWorkout"
+        android:layout_alignLeft="@+id/quickWorkout"
+        android:layout_alignStart="@+id/quickWorkout"
+        android:onClick="savedWorkouts"/>
+
 </RelativeLayout>

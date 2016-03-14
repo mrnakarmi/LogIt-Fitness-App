@@ -51,4 +51,11 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void savedWorkouts(View v){
+        Log.i("MYAPP","I AM IN SAVEDWORKOUTS");
+
+        Intent intent = new Intent(this,savedWorkouts.class);
+        startActivity(intent);
+    }
+
 }
