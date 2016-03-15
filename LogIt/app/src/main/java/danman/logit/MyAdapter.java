@@ -1,6 +1,10 @@
 package danman.logit;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +24,9 @@ public class MyAdapter extends ArrayAdapter<ListElement> {
 
     int resource;
     Context context;
+    String curr;
+    SharedPreferences settings;
+    workoutDatabaseDbHelper mDbHelper;
     private ArrayList<ListElement> aList = new ArrayList<ListElement>();
 
     public MyAdapter(Context _context,int _resource, List<ListElement> items){
@@ -27,16 +34,18 @@ public class MyAdapter extends ArrayAdapter<ListElement> {
         resource = _resource;
         context = _context;
 
+
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent){
         LinearLayout newView;
-
         final ListElement w = getItem(position);
         aList = w.a; //They are both referring to the same object;
         //to create a shallow copy ArrayList<ListElement> = new ArrayList <ListElement>(w.a);
-
+        mDbHelper = new workoutDatabaseDbHelper(context);
+        settings = PreferenceManager.getDefaultSharedPreferences(context);
+        final SharedPreferences.Editor editor = settings.edit();
         //inflate a new view if necessary.
         if(convertView == null ){
             newView = new LinearLayout(getContext());
@@ -60,8 +69,10 @@ public class MyAdapter extends ArrayAdapter<ListElement> {
 
                 //do something when the info button is clicked
                 //show the excercises, their sets, reps and weight;
-
-                Toast.makeText(context, Integer.toString(position), Toast.LENGTH_SHORT).show();
+                editor.putString("workoutName", w.workoutName);
+                editor.commit();
+                Intent intent = new Intent(context,workoutInfo.class);
+                context.startActivity(intent);
                 //Toast.makeText(this, "INFO HAS BEEN UPDATED", Toast.LENGTH_SHORT).show();
             }
         });
@@ -70,6 +81,13 @@ public class MyAdapter extends ArrayAdapter<ListElement> {
             @Override
             public void onClick(View v){
                 aList.remove(w);
+                SQLiteDatabase db = mDbHelper.getWritableDatabase();
+                // Define 'where' part of query.
+                String selection = workoutDatabase.gymWorkout.COLUMN_NAME_UNIQUE_WORKOUT + " LIKE ?";
+                // Specify arguments in placeholder order.
+                String[] selectionArgs = { String.valueOf(w.workoutName) };
+                // Issue SQL statement.
+                db.delete("workout", selection, selectionArgs);
                 notifyDataSetChanged();
             }
         });

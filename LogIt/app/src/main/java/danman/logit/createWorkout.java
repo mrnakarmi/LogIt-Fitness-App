@@ -1,11 +1,8 @@
 package danman.logit;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +15,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.text.SimpleDateFormat;
 
 /**
  * Created by Raman on 3/10/2016.
@@ -44,10 +39,10 @@ public class createWorkout extends AppCompatActivity {
         workoutItems.setAdapter(adapter);
 
         excerciseSelectText = (TextView)findViewById(R.id.excerciseSelectText);
-        workout1 = (CheckBox)findViewById(R.id.workout1Title);
-        workout2 = (CheckBox)findViewById(R.id.workout2Title);
-        workout3 = (CheckBox)findViewById(R.id.workout3Title);
-        workout4 = (CheckBox)findViewById(R.id.workout4Title);
+        workout1 = (CheckBox)findViewById(R.id.workout1Title1);
+        workout2 = (CheckBox)findViewById(R.id.workout2Title1);
+        workout3 = (CheckBox)findViewById(R.id.workout3Title1);
+        workout4 = (CheckBox)findViewById(R.id.workout4Title1);
 
         excerciseSelectText.setVisibility(View.INVISIBLE);
         workout1.setVisibility(View.INVISIBLE);
@@ -160,73 +155,7 @@ public class createWorkout extends AppCompatActivity {
                     workout3.setVisibility(View.VISIBLE);
                     workout4.setVisibility(View.VISIBLE);
                     workoutDatabaseDbHelper mDbHelper = new workoutDatabaseDbHelper(context);
-                    // Gets the data repository in write mode
-                    SQLiteDatabase db = mDbHelper.getWritableDatabase();
-                    //variables to insert
-                    int sets = 3;
-                    int reps = 10;
-                    int weight = 50;
-                    String name = "bicep";
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                    String time = sdf.format(new java.util.Date());
 
-
-
-                    // Create a new map of values, where column names are the keys
-                    ContentValues values = new ContentValues();
-                    values.put(workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY, selected);
-                    values.put(workoutDatabase.gymWorkout.COLUMN_NAME_SETS, sets);
-                    values.put(workoutDatabase.gymWorkout.COLUMN_NAME_REPS, reps);
-                    values.put(workoutDatabase.gymWorkout.COLUMN_NAME_WEIGHT, weight);
-                    values.put(workoutDatabase.gymWorkout.COLUMN_NAME_NAME, name);
-                    values.put(workoutDatabase.gymWorkout.COLUMN_NAME_TIME, time);
-
-                    // Insert the new row, returning the primary key value of the new row
-                    long newRowId;
-                    newRowId = db.insert(
-                            workoutDatabase.gymWorkout.TABLE_NAME,
-                            "null",
-                            values);
-                    Log.i("INSERTEDROWID", String.valueOf(newRowId));
-
-                    SQLiteDatabase dbRead = mDbHelper.getReadableDatabase();
-
-                    // Define a projection that specifies which columns from the database
-                    // you will actually use after this query.
-                    String[] projection = {
-                            workoutDatabase.gymWorkout._ID,
-                            workoutDatabase.gymWorkout.COLUMN_NAME_SETS,
-                            workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY,
-                            workoutDatabase.gymWorkout.COLUMN_NAME_REPS,
-                            workoutDatabase.gymWorkout.COLUMN_NAME_WEIGHT,
-                            workoutDatabase.gymWorkout.COLUMN_NAME_NAME,
-                            workoutDatabase.gymWorkout.COLUMN_NAME_TIME
-                    };
-
-                    String selection = "category = ?";
-                    String[] selectionArgs = {selected};
-
-
-
-                    // How you want the results sorted in the resulting Cursor
-                    String sortOrder =
-                            workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY + " DESC";
-
-                    Cursor c = dbRead.query(
-                            workoutDatabase.gymWorkout.TABLE_NAME,  // The table to query
-                            projection,                               // The columns to return
-                            selection,                                // The columns for the WHERE clause
-                            selectionArgs,                            // The values for the WHERE clause
-                            null,                                     // don't group the rows
-                            null,                                     // don't filter by row groups
-                            sortOrder                                 // The sort order
-                    );
-                    //moveToLast is not necesarry, could use moveToFirst instead
-                    c.moveToLast();
-                    String category = c.getString(
-                            c.getColumnIndexOrThrow(workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY)
-                    );
-                    Log.i("GETCATEGORYNAME", category);
                 }
 
             }

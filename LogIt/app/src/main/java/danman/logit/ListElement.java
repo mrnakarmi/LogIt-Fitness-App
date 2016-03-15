@@ -11,11 +11,11 @@ public class ListElement {
 
     ListElement(String tl, String bl, ArrayList<ListElement> aList){
         workoutName = tl;
-        workoutInfo = bl;
+        workoutButton = bl;
         a = aList;
     }
 
-    public String workoutName, workoutInfo;
+    public String workoutName, workoutButton;
     ArrayList<ListElement> a;
 
 }

@@ -2,6 +2,7 @@ package danman.logit;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 
@@ -31,6 +33,7 @@ public class editWorkout extends AppCompatActivity {
     EditText workout1SetsField,workout2SetsField,workout3SetsField,workout4SetsField;
     EditText workout1RepsField,workout2RepsField,workout3RepsField,workout4RepsField;
     EditText workout1WeightField,workout2WeightField,workout3WeightField,workout4WeightField;
+    EditText workoutName;
 
     String workoutItem;
 
@@ -44,28 +47,28 @@ public class editWorkout extends AppCompatActivity {
         mDbHelper = new workoutDatabaseDbHelper(context);
         settings = PreferenceManager.getDefaultSharedPreferences(this);
 
-        workout1Title = (TextView)findViewById(R.id.workout1Title);
-        workout2Title = (TextView)findViewById(R.id.workout2Title);
-        workout3Title = (TextView)findViewById(R.id.workout3Title);
-        workout4Title = (TextView)findViewById(R.id.workout4Title);
+        workout1Title = (TextView)findViewById(R.id.workout1Title1);
+        workout2Title = (TextView)findViewById(R.id.workout2Title1);
+        workout3Title = (TextView)findViewById(R.id.workout3Title1);
+        workout4Title = (TextView)findViewById(R.id.workout4Title1);
         workout1Title.setVisibility(View.INVISIBLE);
         workout2Title.setVisibility(View.INVISIBLE);
         workout3Title.setVisibility(View.INVISIBLE);
         workout4Title.setVisibility(View.INVISIBLE);
 
-        workout1SetsText = (TextView) findViewById(R.id.workout1SetsText);
-        workout2SetsText = (TextView) findViewById(R.id.workout2SetsText);
-        workout3SetsText = (TextView) findViewById(R.id.workout3SetsText);
+        workout1SetsText = (TextView) findViewById(R.id.workout1SetsText1);
+        workout2SetsText = (TextView) findViewById(R.id.workout2SetsText1);
+        workout3SetsText = (TextView) findViewById(R.id.workout3SetsText1);
         workout4SetsText = (TextView) findViewById(R.id.workout4SetsText);
         workout1SetsText.setVisibility(View.INVISIBLE);
         workout2SetsText.setVisibility(View.INVISIBLE);
         workout3SetsText.setVisibility(View.INVISIBLE);
         workout4SetsText.setVisibility(View.INVISIBLE);
 
-        workout1RepsText = (TextView) findViewById(R.id.workout1RepsText);
-        workout2RepsText = (TextView) findViewById(R.id.workout2RepsText);
-        workout3RepsText = (TextView) findViewById(R.id.workout3RepsText);
-        workout4RepsText = (TextView) findViewById(R.id.workout4RepsText);
+        workout1RepsText = (TextView) findViewById(R.id.workout1RepsText1);
+        workout2RepsText = (TextView) findViewById(R.id.workout2RepsText1);
+        workout3RepsText = (TextView) findViewById(R.id.workout3RepsText1);
+        workout4RepsText = (TextView) findViewById(R.id.workout4RepsText1);
         workout1RepsText.setVisibility(View.INVISIBLE);
         workout2RepsText.setVisibility(View.INVISIBLE);
         workout3RepsText.setVisibility(View.INVISIBLE);
@@ -80,29 +83,29 @@ public class editWorkout extends AppCompatActivity {
         workout3WeightText.setVisibility(View.INVISIBLE);
         workout4WeightText.setVisibility(View.INVISIBLE);
 
-        workout1SetsField = (EditText)findViewById(R.id.workout1Sets);
-        workout2SetsField = (EditText)findViewById(R.id.workout2Sets);
-        workout3SetsField = (EditText)findViewById(R.id.workout3Sets);
-        workout4SetsField = (EditText)findViewById(R.id.workout4Sets);
+        workout1SetsField = (EditText)findViewById(R.id.workout1Sets1);
+        workout2SetsField = (EditText)findViewById(R.id.workout2Sets1);
+        workout3SetsField = (EditText)findViewById(R.id.workout3Sets1);
+        workout4SetsField = (EditText)findViewById(R.id.workout4Sets1);
         workout1SetsField.setVisibility(View.INVISIBLE);
         workout2SetsField.setVisibility(View.INVISIBLE);
         workout3SetsField.setVisibility(View.INVISIBLE);
         workout4SetsField.setVisibility(View.INVISIBLE);
 
-        workout1RepsField = (EditText)findViewById(R.id.workout1Reps);
-        workout2RepsField = (EditText)findViewById(R.id.workout2Reps);
-        workout3RepsField = (EditText)findViewById(R.id.workout3Reps);
-        workout4RepsField = (EditText)findViewById(R.id.workout4Reps);
+        workout1RepsField = (EditText)findViewById(R.id.workout1Reps1);
+        workout2RepsField = (EditText)findViewById(R.id.workout2Reps1);
+        workout3RepsField = (EditText)findViewById(R.id.workout3Reps1);
+        workout4RepsField = (EditText)findViewById(R.id.workout4Reps1);
         workout1RepsField.setVisibility(View.INVISIBLE);
         workout2RepsField.setVisibility(View.INVISIBLE);
         workout3RepsField.setVisibility(View.INVISIBLE);
         workout4RepsField.setVisibility(View.INVISIBLE);
 
 
-        workout1WeightField = (EditText)findViewById(R.id.workout1Weight);
-        workout2WeightField = (EditText)findViewById(R.id.workout2Weight);
-        workout3WeightField = (EditText)findViewById(R.id.workout3Weight);
-        workout4WeightField = (EditText)findViewById(R.id.workout4Weight);
+        workout1WeightField = (EditText)findViewById(R.id.workout1Weight1);
+        workout2WeightField = (EditText)findViewById(R.id.workout2Weight1);
+        workout3WeightField = (EditText)findViewById(R.id.workout3Weight1);
+        workout4WeightField = (EditText)findViewById(R.id.workout4Weight1);
         workout1WeightField.setVisibility(View.INVISIBLE);
         workout2WeightField.setVisibility(View.INVISIBLE);
         workout3WeightField.setVisibility(View.INVISIBLE);
@@ -119,7 +122,7 @@ public class editWorkout extends AppCompatActivity {
         Log.i("CHECKINGINFO2", Boolean.toString(workout2Boolean));
         Log.i("CHECKINGINFO3", Boolean.toString(workout3Boolean));
         Log.i("CHECKINGINFO4", Boolean.toString(workout4Boolean));
-
+        workoutName = (EditText)findViewById(R.id.saveWorkoutName);
         workoutItem = settings.getString("createWorkoutItem","");
         Log.i("CHECKINGINFOWORKOUTITEM",workoutItem);
 
@@ -246,27 +249,32 @@ public class editWorkout extends AppCompatActivity {
         if(workout1Boolean) {
             System.out.println("the text 1 is: " + workout1Title.getText().toString());
             saveRow(workout1Title.getText().toString(), Integer.parseInt(workout1SetsField.getText().toString()),
-                    Integer.parseInt(workout1RepsField.getText().toString()), Integer.parseInt(workout1WeightField.getText().toString()), "1");
+                    Integer.parseInt(workout1RepsField.getText().toString()), Integer.parseInt(workout1WeightField.getText().toString()), workoutName.getText().toString());
         }
         if(workout2Boolean) {
             System.out.println("the text 2 is: " + workout2Title.getText().toString());
             saveRow(workout2Title.getText().toString(), Integer.parseInt(workout2SetsField.getText().toString()),
-                    Integer.parseInt(workout2RepsField.getText().toString()), Integer.parseInt(workout2WeightField.getText().toString()), "2");
+                    Integer.parseInt(workout2RepsField.getText().toString()), Integer.parseInt(workout2WeightField.getText().toString()), workoutName.getText().toString());
         }
         if(workout3Boolean) {
             System.out.println("the text 3 is: " + workout3Title.getText().toString());
             saveRow(workout3Title.getText().toString(), Integer.parseInt(workout3SetsField.getText().toString()),
-                    Integer.parseInt(workout3RepsField.getText().toString()), Integer.parseInt(workout3WeightField.getText().toString()), "3");
+                    Integer.parseInt(workout3RepsField.getText().toString()), Integer.parseInt(workout3WeightField.getText().toString()), workoutName.getText().toString());
         }
         if(workout4Boolean) {
             System.out.println("the text 4 is: " + workout4Title.getText().toString());
             saveRow(workout4Title.getText().toString(), Integer.parseInt(workout4SetsField.getText().toString()),
-                    Integer.parseInt(workout4RepsField.getText().toString()), Integer.parseInt(workout4WeightField.getText().toString()), "4");
+                    Integer.parseInt(workout4RepsField.getText().toString()), Integer.parseInt(workout4WeightField.getText().toString()), workoutName.getText().toString());
         }
+        Toast.makeText(this, "Your Workout Has Been Saved!", Toast.LENGTH_SHORT).show();
+
+        Intent home = new Intent(context, HomeScreen.class);
+        startActivity(home);
+        finish();
 
     }
     //the num field is to ensure only one entry will exist for each workout type (it is unique)
-    public void saveRow(String workoutName, int sets, int reps, int weight, String num){
+    public void saveRow(String exName, int sets, int reps, int weight, String workName){
 
         // Gets the data repository in write mode
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
@@ -283,10 +291,10 @@ public class editWorkout extends AppCompatActivity {
         values.put(workoutDatabase.gymWorkout.COLUMN_NAME_SETS, sets);
         values.put(workoutDatabase.gymWorkout.COLUMN_NAME_REPS, reps);
         values.put(workoutDatabase.gymWorkout.COLUMN_NAME_WEIGHT, weight);
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_NAME, workoutName);
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_NAME, exName);
         values.put(workoutDatabase.gymWorkout.COLUMN_NAME_TIME, time);
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_UNIQUE_WORKOUT, workoutName + num);
-
+        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_UNIQUE_WORKOUT, workName);
+        Log.i("EXERCISENAME", workName);
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insertWithOnConflict(

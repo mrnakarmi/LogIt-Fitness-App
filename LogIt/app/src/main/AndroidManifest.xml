@@ -55,6 +55,11 @@
             android:parentActivityName="danman.logit.createWorkout">
         </activity>
         <activity
+            android:name=".workoutInfo"
+            android:label="workoutInfo"
+            android:parentActivityName="danman.logit.savedWorkouts">
+        </activity>
+        <activity
             android:name=".savedWorkouts"
             android:label="savedWorkouts"
             android:parentActivityName="danman.logit.HomeScreen">
