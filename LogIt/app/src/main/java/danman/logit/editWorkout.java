@@ -268,9 +268,13 @@ public class editWorkout extends AppCompatActivity {
         }
 
 
-        Intent home = new Intent(context, HomeScreen.class);
-        startActivity(home);
-        finish();
+        if(workoutName.getText().toString().isEmpty() || workoutName.getText().toString().equals("")){
+
+        }else {
+            Intent home = new Intent(context, HomeScreen.class);
+            startActivity(home);
+            finish();
+        }
 
     }
     //the num field is to ensure only one entry will exist for each workout type (it is unique)
