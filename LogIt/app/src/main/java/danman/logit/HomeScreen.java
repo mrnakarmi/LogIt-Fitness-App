@@ -40,9 +40,6 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
-    public void calendar(View v){
-        Log.i("MYAPP","I AM IN CALENDAR");
-    }
 
     public void quickWorkout(View v){
         Log.i("MYAPP","I AM IN QUICKWORKOUT");

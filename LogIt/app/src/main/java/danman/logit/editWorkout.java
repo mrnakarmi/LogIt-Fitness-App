@@ -248,25 +248,25 @@ public class editWorkout extends AppCompatActivity {
     public void saveWorkout(View v){
         if(workout1Boolean) {
             System.out.println("the text 1 is: " + workout1Title.getText().toString());
-            saveRow(workout1Title.getText().toString(), Integer.parseInt(workout1SetsField.getText().toString()),
-                    Integer.parseInt(workout1RepsField.getText().toString()), Integer.parseInt(workout1WeightField.getText().toString()), workoutName.getText().toString());
+            saveRow(workout1Title.getText().toString(), workout1SetsField.getText().toString(),
+                    workout1RepsField.getText().toString(), workout1WeightField.getText().toString(), workoutName.getText().toString());
         }
         if(workout2Boolean) {
             System.out.println("the text 2 is: " + workout2Title.getText().toString());
-            saveRow(workout2Title.getText().toString(), Integer.parseInt(workout2SetsField.getText().toString()),
-                    Integer.parseInt(workout2RepsField.getText().toString()), Integer.parseInt(workout2WeightField.getText().toString()), workoutName.getText().toString());
+            saveRow(workout2Title.getText().toString(), workout2SetsField.getText().toString(),
+                    workout2RepsField.getText().toString(), workout2WeightField.getText().toString(), workoutName.getText().toString());
         }
         if(workout3Boolean) {
             System.out.println("the text 3 is: " + workout3Title.getText().toString());
-            saveRow(workout3Title.getText().toString(), Integer.parseInt(workout3SetsField.getText().toString()),
-                    Integer.parseInt(workout3RepsField.getText().toString()), Integer.parseInt(workout3WeightField.getText().toString()), workoutName.getText().toString());
+            saveRow(workout3Title.getText().toString(), workout3SetsField.getText().toString(), workout3RepsField.getText().toString(),
+                    workout3WeightField.getText().toString(), workoutName.getText().toString());
         }
         if(workout4Boolean) {
             System.out.println("the text 4 is: " + workout4Title.getText().toString());
-            saveRow(workout4Title.getText().toString(), Integer.parseInt(workout4SetsField.getText().toString()),
-                    Integer.parseInt(workout4RepsField.getText().toString()), Integer.parseInt(workout4WeightField.getText().toString()), workoutName.getText().toString());
+            saveRow(workout4Title.getText().toString(), workout4SetsField.getText().toString(), workout4RepsField.getText().toString(),
+                    workout4WeightField.getText().toString(), workoutName.getText().toString());
         }
-        Toast.makeText(this, "Your Workout Has Been Saved!", Toast.LENGTH_SHORT).show();
+
 
         Intent home = new Intent(context, HomeScreen.class);
         startActivity(home);
@@ -274,34 +274,54 @@ public class editWorkout extends AppCompatActivity {
 
     }
     //the num field is to ensure only one entry will exist for each workout type (it is unique)
-    public void saveRow(String exName, int sets, int reps, int weight, String workName){
+    public void saveRow(String exName, String sets, String reps, String weight, String workName){
 
-        // Gets the data repository in write mode
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        //variables to insert
+        if(workName.isEmpty() || workName.equals("")) {
+            Toast.makeText(this, "Please name your workout!", Toast.LENGTH_SHORT).show();
+        }else {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String time = sdf.format(new java.util.Date());
+            if (sets.isEmpty() || sets.equals("")) {
+                sets = "0";
+            }
+
+            if (reps.isEmpty() || reps.equals("")) {
+                reps = "0";
+            }
+
+            if (weight.isEmpty() || weight.equals("")) {
+                weight = "0";
+            }
 
 
+            // Gets the data repository in write mode
+            SQLiteDatabase db = mDbHelper.getWritableDatabase();
+            //variables to insert
 
-        // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY, workoutItem);
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_SETS, sets);
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_REPS, reps);
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_WEIGHT, weight);
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_NAME, exName);
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_TIME, time);
-        values.put(workoutDatabase.gymWorkout.COLUMN_NAME_UNIQUE_WORKOUT, workName);
-        Log.i("EXERCISENAME", workName);
-        // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insertWithOnConflict(
-                workoutDatabase.gymWorkout.TABLE_NAME,
-                "null",
-                values, SQLiteDatabase.CONFLICT_REPLACE);
-        Log.i("INSERTEDROWID", String.valueOf(newRowId));
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String time = sdf.format(new java.util.Date());
+
+
+            // Create a new map of values, where column names are the keys
+            ContentValues values = new ContentValues();
+            values.put(workoutDatabase.gymWorkout.COLUMN_NAME_CATEGORY, workoutItem);
+            values.put(workoutDatabase.gymWorkout.COLUMN_NAME_SETS, sets);
+            values.put(workoutDatabase.gymWorkout.COLUMN_NAME_REPS, reps);
+            values.put(workoutDatabase.gymWorkout.COLUMN_NAME_WEIGHT, weight);
+            values.put(workoutDatabase.gymWorkout.COLUMN_NAME_NAME, exName);
+            values.put(workoutDatabase.gymWorkout.COLUMN_NAME_TIME, time);
+            values.put(workoutDatabase.gymWorkout.COLUMN_NAME_UNIQUE_WORKOUT, workName);
+            Log.i("EXERCISENAME", workName);
+            // Insert the new row, returning the primary key value of the new row
+            long newRowId;
+            newRowId = db.insertWithOnConflict(
+                    workoutDatabase.gymWorkout.TABLE_NAME,
+                    "null",
+                    values, SQLiteDatabase.CONFLICT_REPLACE);
+            Log.i("INSERTEDROWID", String.valueOf(newRowId));
+
+            Toast.makeText(this, "Your Workout Has Been Saved!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void getRow(String workoutName, String num, EditText sets, EditText reps, EditText weight){

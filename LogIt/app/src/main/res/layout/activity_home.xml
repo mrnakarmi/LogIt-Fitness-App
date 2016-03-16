@@ -34,22 +34,13 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Calendar"
-        android:id="@+id/calendar"
-        android:onClick="calendar"
-        android:layout_alignTop="@+id/milestone"
-        android:layout_alignRight="@+id/createWorkout"
-        android:layout_alignEnd="@+id/createWorkout" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Milestone"
         android:id="@+id/milestone"
         android:onClick="milestone"
-        android:layout_marginTop="81dp"
+        android:layout_marginTop="82dp"
         android:layout_below="@+id/quickWorkout"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/createWorkout"
+        android:layout_alignEnd="@+id/createWorkout" />
 
     <Button
         android:layout_width="wrap_content"
